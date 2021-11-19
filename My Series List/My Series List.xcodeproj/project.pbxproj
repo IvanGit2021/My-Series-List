@@ -19,6 +19,7 @@
 		9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA3274669A600AAB574 /* DetailsViewController.swift */; };
 		9C61ACA627466B3700AAB574 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA527466B3700AAB574 /* SeriesModel.swift */; };
 		9C61ACA827466BA900AAB574 /* ApiFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */; };
+		9CD229542747CC9900BD5735 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9C61ACA3274669A600AAB574 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		9C61ACA527466B3700AAB574 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
 		9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFetchRequest.swift; sourceTree = "<group>"; };
+		9CD229532747CC9900BD5735 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,8 @@
 		9C61AC9C2746691E00AAB574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CD229522747CC7500BD5735 /* Repository */,
 				9C61ACA527466B3700AAB574 /* SeriesModel.swift */,
-				9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +109,15 @@
 			children = (
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9CD229522747CC7500BD5735 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */,
+				9CD229532747CC9900BD5735 /* CoreData.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				9C61ACA22746699B00AAB574 /* SearchViewController.swift in Sources */,
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
+				9CD229542747CC9900BD5735 /* CoreData.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
 				9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */,
 				9C61ACA827466BA900AAB574 /* ApiFetchRequest.swift in Sources */,
