@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ApiFetchRequest {
+class RepositoryApi {
     
     let url = "https://api.themoviedb.org/3/search/tv?api_key=0fbc13d4f4bb3dcc23cb30a1a289d426&language=en-US&page=1&query=game&include_adult=false"
     

@@ -18,8 +18,9 @@
 		9C61ACA22746699B00AAB574 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA12746699B00AAB574 /* SearchViewController.swift */; };
 		9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA3274669A600AAB574 /* DetailsViewController.swift */; };
 		9C61ACA627466B3700AAB574 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA527466B3700AAB574 /* SeriesModel.swift */; };
-		9C61ACA827466BA900AAB574 /* ApiFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */; };
-		9CD229542747CC9900BD5735 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* CoreData.swift */; };
+		9C61ACA827466BA900AAB574 /* RepositoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* RepositoryApi.swift */; };
+		9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */; };
+		9CD229592748269800BD5735 /* RepositoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229582748269800BD5735 /* RepositoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +37,9 @@
 		9C61ACA12746699B00AAB574 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9C61ACA3274669A600AAB574 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		9C61ACA527466B3700AAB574 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
-		9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFetchRequest.swift; sourceTree = "<group>"; };
-		9CD229532747CC9900BD5735 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		9C61ACA727466BA900AAB574 /* RepositoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryApi.swift; sourceTree = "<group>"; };
+		9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCoreData.swift; sourceTree = "<group>"; };
+		9CD229582748269800BD5735 /* RepositoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +116,9 @@
 		9CD229522747CC7500BD5735 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				9C61ACA727466BA900AAB574 /* ApiFetchRequest.swift */,
-				9CD229532747CC9900BD5735 /* CoreData.swift */,
+				9C61ACA727466BA900AAB574 /* RepositoryApi.swift */,
+				9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */,
+				9CD229582748269800BD5735 /* RepositoryController.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -195,10 +198,11 @@
 				9C61ACA22746699B00AAB574 /* SearchViewController.swift in Sources */,
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
-				9CD229542747CC9900BD5735 /* CoreData.swift in Sources */,
+				9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
 				9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */,
-				9C61ACA827466BA900AAB574 /* ApiFetchRequest.swift in Sources */,
+				9CD229592748269800BD5735 /* RepositoryController.swift in Sources */,
+				9C61ACA827466BA900AAB574 /* RepositoryApi.swift in Sources */,
 				9C61AC882746686900AAB574 /* SceneDelegate.swift in Sources */,
 				9C61ACA02746698E00AAB574 /* MainViewController.swift in Sources */,
 			);

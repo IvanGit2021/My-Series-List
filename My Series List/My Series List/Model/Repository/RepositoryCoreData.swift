@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class CoreDataModel {
+class RepositoryCoreData {
    
    var coreDataSeriesArray = [CoreDataSeries]()
    
@@ -47,7 +47,7 @@ class CoreDataModel {
    }
 }
 
-extension CoreDataModel{
+extension RepositoryCoreData{
    
    var context: NSManagedObjectContext {
        let appDelegate = UIApplication.shared.delegate as! AppDelegate
