@@ -9,12 +9,18 @@ import Foundation
 
 class RepositoryController {
     
-    struct DomainSeries {
-        let name: String?
-        let overview: String?
-        let poster_path: String?
-        let vote_average: Double?
+    let repositoryApi = RepositoryApi()
+    var series = [Series]()
+    
+    func getDataFromRepositoryApi() -> [Series] {
+        repositoryApi.getData(search: "squid") { seriesArray in
+            self.series = seriesArray
+        }
+    
+        return series
     }
     
-   
+    func getDataFromRepositoryCoreData () {
+        
+    }
 }
