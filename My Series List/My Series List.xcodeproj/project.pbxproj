@@ -56,8 +56,6 @@
 		9C61AC792746686900AAB574 = {
 			isa = PBXGroup;
 			children = (
-				9C61ACA3274669A600AAB574 /* DetailsViewController.swift */,
-				9C61ACA12746699B00AAB574 /* SearchViewController.swift */,
 				9C61AC842746686900AAB574 /* My Series List */,
 				9C61AC832746686900AAB574 /* Products */,
 			);
@@ -100,6 +98,8 @@
 		9C61AC9D2746692900AAB574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C61ACA12746699B00AAB574 /* SearchViewController.swift */,
+				9C61ACA3274669A600AAB574 /* DetailsViewController.swift */,
 				9C61AC892746686900AAB574 /* ViewController.swift */,
 				9C61AC9F2746698E00AAB574 /* MainViewController.swift */,
 			);
