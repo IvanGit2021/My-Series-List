@@ -12,13 +12,11 @@ import UIKit
 class RepositoryCoreData {
    
     var coreDataSeriesArray = [CoreDataSeries]()
-    var uuid = UUID().uuidString
 
-    
-   func addSeries() {
+    func addSeries() {
        let series = CoreDataSeries(context: context)
        
-       series.id = uuid
+       series.id = 211
        series.name = "New Series"
        series.overview = "Great New Series"
        series.poster_path = "www.image.com.jpg"

@@ -16,4 +16,5 @@ struct Series: Codable {
     let overview: String?
     let poster_path: String?
     let vote_average: Double?
+    let id: Int?
 }
