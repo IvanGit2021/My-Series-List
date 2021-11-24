@@ -10,17 +10,21 @@ import Foundation
 class RepositoryController {
     
     let repositoryApi = RepositoryApi()
-    var series = [Series]()
+    let repositoryCoreData = RepositoryCoreData()
+    var seriesArrayFromApi = [Series]()
+    var seriesArrayFromCoreData = [CoreDataSeries]()
     
     func getDataFromRepositoryApi() -> [Series] {
         repositoryApi.getData(search: "squid") { seriesArray in
-            self.series = seriesArray
+            self.seriesArrayFromApi = seriesArray
         }
     
-        return series
+        return seriesArrayFromApi
     }
     
-    func getDataFromRepositoryCoreData () {
+    func getDataFromRepositoryCoreData () -> [CoreDataSeries] {
+        seriesArrayFromCoreData = repositoryCoreData.showSeries()
         
+        return seriesArrayFromCoreData
     }
 }

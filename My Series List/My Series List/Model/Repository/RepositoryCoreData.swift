@@ -31,17 +31,19 @@ class RepositoryCoreData {
        }
    }
    
-   func showSeries() {
+   func showSeries() -> [CoreDataSeries] {
        let request: NSFetchRequest<CoreDataSeries> = CoreDataSeries.fetchRequest()
        do {
            coreDataSeriesArray = try context.fetch(request)
        } catch {
            print(error)
        }
+       
+       return coreDataSeriesArray
    }
    
-   func deleteSeries(serie: CoreDataSeries) {
-       context.delete(serie)
+   func deleteSeries(series: CoreDataSeries) {
+       context.delete(series)
        do {
            try context.save()
        } catch {
