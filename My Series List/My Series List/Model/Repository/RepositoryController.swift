@@ -11,20 +11,19 @@ class RepositoryController {
     
     let repositoryApi = RepositoryApi()
     let repositoryCoreData = RepositoryCoreData()
-    var seriesArrayFromApi = [Series]()
     var seriesArrayFromCoreData = [CoreDataSeries]()
     
-    func getDataFromRepositoryApi() -> [Series] {
-        repositoryApi.getData(search: "squid") { seriesArray in
-            self.seriesArrayFromApi = seriesArray
+    func getDataFromRepositoryApi(completionHandler: @escaping ([Series]) -> Void) {
+        repositoryApi.getData(search: "squid") { series in
+            completionHandler(series)
         }
-    
-        return seriesArrayFromApi
     }
     
-    func getDataFromRepositoryCoreData () -> [CoreDataSeries] {
-        seriesArrayFromCoreData = repositoryCoreData.showSeries()
+    /*func getDataFromRepositoryCoreData (completionHandler: @escaping ([CoreDataSeries]) -> Void) {
+        repositoryCoreData.showSeries { series in
+            completionHandler(series)
+        }
         
-        return seriesArrayFromCoreData
-    }
+        
+    }*/
 }

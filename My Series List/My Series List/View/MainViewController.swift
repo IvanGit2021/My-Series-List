@@ -7,23 +7,37 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
+class MainViewController: UIViewController, MainViewDelegate {
+    
+    let mainViewPresenter = MainViewPresenter()
+    let repositoryCoreData = RepositoryCoreData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainViewPresenter.setMainViewDelegate(self)
+        repositoryCoreData.showSeries()
 
-        // Do any additional setup after loading the view.
+    }
+}
+
+extension MainViewController {
+    
+    func startLoading() {
+        print("Start Loading")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func finishLoading() {
+        print("Finish Loading")
     }
-    */
-
+    
+    func listSeries(_ series: [Series]) {
+        series.forEach { series in
+            print(series)
+        }
+    }
+    
+    func listEmpty() {
+        print("No data found")
+    }
 }
