@@ -14,10 +14,7 @@ class MainViewController: UIViewController, MainViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mainViewPresenter.setMainViewDelegate(self)
-        //repositoryCoreData.showSeries()
-
     }
 }
 
@@ -31,9 +28,9 @@ extension MainViewController {
         print("Finish Loading")
     }
     
-    func listSeries(_ series: [Series]) {
-        series.forEach { series in
-            print(series)
+    func listSeries(_ series: [CoreDataSeries]) {
+        series.forEach { coreDataSeriesArray in
+            printContent(coreDataSeriesArray)
         }
     }
     

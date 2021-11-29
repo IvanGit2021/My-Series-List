@@ -11,7 +11,6 @@ class RepositoryController {
     
     let repositoryApi = RepositoryApi()
     let repositoryCoreData = RepositoryCoreData()
-    var seriesArrayFromCoreData = [CoreDataSeries]()
     
     func getDataFromRepositoryApi(completionHandler: @escaping ([Series]) -> Void) {
         repositoryApi.getData(search: "squid") { series in

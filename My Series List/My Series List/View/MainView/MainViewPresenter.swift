@@ -11,7 +11,7 @@ protocol MainViewDelegate: NSObjectProtocol {
     
     func startLoading()
     func finishLoading()
-    func listSeries(_ series: [Series])
+    func listSeries(_ series: [CoreDataSeries])
     func listEmpty()
 }
 
@@ -25,10 +25,10 @@ class MainViewPresenter {
     }
     
     func getDataFromRepository() {
-        repositoryController.getDataFromRepositoryApi(completionHandler: { series in
-            if series.count != 0 {
+        repositoryController.getDataFromRepositoryCoreData(completionHandler: { coreDataSeriesArray in
+            if coreDataSeriesArray.count != 0 {
                 self.mainViewDelegate?.startLoading()
-                self.mainViewDelegate?.listSeries(series)
+                self.mainViewDelegate?.listSeries(coreDataSeriesArray)
                 self.mainViewDelegate?.finishLoading()
             } else {
                 self.mainViewDelegate?.listEmpty()
