@@ -16,7 +16,7 @@ class MainViewController: UIViewController, MainViewDelegate {
         super.viewDidLoad()
         
         mainViewPresenter.setMainViewDelegate(self)
-        repositoryCoreData.showSeries()
+        //repositoryCoreData.showSeries()
 
     }
 }

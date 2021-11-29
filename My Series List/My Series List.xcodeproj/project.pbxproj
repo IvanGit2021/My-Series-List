@@ -21,7 +21,7 @@
 		9C61ACA827466BA900AAB574 /* RepositoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* RepositoryApi.swift */; };
 		9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */; };
 		9CD229592748269800BD5735 /* RepositoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229582748269800BD5735 /* RepositoryController.swift */; };
-		9CFF4F71274E8CCA00279BF8 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF4F70274E8CCA00279BF8 /* Presenter.swift */; };
+		9CFF4F71274E8CCA00279BF8 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF4F70274E8CCA00279BF8 /* MainViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		9C61ACA727466BA900AAB574 /* RepositoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryApi.swift; sourceTree = "<group>"; };
 		9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCoreData.swift; sourceTree = "<group>"; };
 		9CD229582748269800BD5735 /* RepositoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryController.swift; sourceTree = "<group>"; };
-		9CFF4F70274E8CCA00279BF8 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		9CFF4F70274E8CCA00279BF8 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,6 @@
 		9C61AC842746686900AAB574 /* My Series List */ = {
 			isa = PBXGroup;
 			children = (
-				9C61AC9E2746693300AAB574 /* Presenter */,
 				9C61AC9D2746692900AAB574 /* View */,
 				9C61AC9C2746691E00AAB574 /* Model */,
 				9C61AC852746686900AAB574 /* AppDelegate.swift */,
@@ -103,17 +102,18 @@
 				9C61ACA12746699B00AAB574 /* SearchViewController.swift */,
 				9C61ACA3274669A600AAB574 /* DetailsViewController.swift */,
 				9C61AC892746686900AAB574 /* ViewController.swift */,
-				9C61AC9F2746698E00AAB574 /* MainViewController.swift */,
+				9C9035852754ECCD007655C7 /* MainView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		9C61AC9E2746693300AAB574 /* Presenter */ = {
+		9C9035852754ECCD007655C7 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				9CFF4F70274E8CCA00279BF8 /* Presenter.swift */,
+				9CFF4F70274E8CCA00279BF8 /* MainViewPresenter.swift */,
+				9C61AC9F2746698E00AAB574 /* MainViewController.swift */,
 			);
-			path = Presenter;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		9CD229522747CC7500BD5735 /* Repository */ = {
@@ -203,7 +203,7 @@
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
 				9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
-				9CFF4F71274E8CCA00279BF8 /* Presenter.swift in Sources */,
+				9CFF4F71274E8CCA00279BF8 /* MainViewPresenter.swift in Sources */,
 				9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */,
 				9CD229592748269800BD5735 /* RepositoryController.swift in Sources */,
 				9C61ACA827466BA900AAB574 /* RepositoryApi.swift in Sources */,
