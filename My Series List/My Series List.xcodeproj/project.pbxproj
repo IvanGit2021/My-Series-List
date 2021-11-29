@@ -19,6 +19,8 @@
 		9C61ACA4274669A600AAB574 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA3274669A600AAB574 /* DetailsViewController.swift */; };
 		9C61ACA627466B3700AAB574 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA527466B3700AAB574 /* SeriesModel.swift */; };
 		9C61ACA827466BA900AAB574 /* RepositoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* RepositoryApi.swift */; };
+		9CB46DFC2754F3D800382FDD /* DetailsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB46DFB2754F3D800382FDD /* DetailsViewPresenter.swift */; };
+		9CB46DFE2754F3EF00382FDD /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB46DFD2754F3EF00382FDD /* SearchViewPresenter.swift */; };
 		9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */; };
 		9CD229592748269800BD5735 /* RepositoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229582748269800BD5735 /* RepositoryController.swift */; };
 		9CFF4F71274E8CCA00279BF8 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF4F70274E8CCA00279BF8 /* MainViewPresenter.swift */; };
@@ -39,6 +41,8 @@
 		9C61ACA3274669A600AAB574 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		9C61ACA527466B3700AAB574 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
 		9C61ACA727466BA900AAB574 /* RepositoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryApi.swift; sourceTree = "<group>"; };
+		9CB46DFB2754F3D800382FDD /* DetailsViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewPresenter.swift; sourceTree = "<group>"; };
+		9CB46DFD2754F3EF00382FDD /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 		9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCoreData.swift; sourceTree = "<group>"; };
 		9CD229582748269800BD5735 /* RepositoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryController.swift; sourceTree = "<group>"; };
 		9CFF4F70274E8CCA00279BF8 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
@@ -99,8 +103,8 @@
 		9C61AC9D2746692900AAB574 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C61ACA12746699B00AAB574 /* SearchViewController.swift */,
-				9C61ACA3274669A600AAB574 /* DetailsViewController.swift */,
+				9CB46DFA2754F3A800382FDD /* DetailsView */,
+				9CB46DF92754F39C00382FDD /* SearchView */,
 				9C61AC892746686900AAB574 /* ViewController.swift */,
 				9C9035852754ECCD007655C7 /* MainView */,
 			);
@@ -114,6 +118,24 @@
 				9C61AC9F2746698E00AAB574 /* MainViewController.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		9CB46DF92754F39C00382FDD /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				9C61ACA12746699B00AAB574 /* SearchViewController.swift */,
+				9CB46DFD2754F3EF00382FDD /* SearchViewPresenter.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		9CB46DFA2754F3A800382FDD /* DetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				9C61ACA3274669A600AAB574 /* DetailsViewController.swift */,
+				9CB46DFB2754F3D800382FDD /* DetailsViewPresenter.swift */,
+			);
+			path = DetailsView;
 			sourceTree = "<group>";
 		};
 		9CD229522747CC7500BD5735 /* Repository */ = {
@@ -198,7 +220,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C61ACA627466B3700AAB574 /* SeriesModel.swift in Sources */,
+				9CB46DFC2754F3D800382FDD /* DetailsViewPresenter.swift in Sources */,
 				9C61ACA22746699B00AAB574 /* SearchViewController.swift in Sources */,
+				9CB46DFE2754F3EF00382FDD /* SearchViewPresenter.swift in Sources */,
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
 				9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */,
