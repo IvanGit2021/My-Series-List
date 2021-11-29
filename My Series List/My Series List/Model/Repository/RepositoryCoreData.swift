@@ -13,14 +13,14 @@ class RepositoryCoreData {
    
     var coreDataSeriesArray = [CoreDataSeries]()
 
-    func addSeries() {
+    func addSeries(id: Int32, name: String, overview: String, poster_path: String, vote_average: Double) {
        let series = CoreDataSeries(context: context)
        
-       series.id = 211
-       series.name = "New Series"
-       series.overview = "Great New Series"
-       series.poster_path = "www.image.com.jpg"
-       series.vote_average = 8.4
+       series.id = id
+       series.name = name
+       series.overview = overview
+       series.poster_path = poster_path
+       series.vote_average = vote_average
        
        do {
            try context.save()
@@ -29,15 +29,14 @@ class RepositoryCoreData {
        }
    }
    
-   func showSeries() -> [CoreDataSeries] {
+   func showSeries(completionHandler: @escaping ([CoreDataSeries]) -> Void) {
        let request: NSFetchRequest<CoreDataSeries> = CoreDataSeries.fetchRequest()
-       do {
-           coreDataSeriesArray = try context.fetch(request)
-       } catch {
-           print(error)
-       }
-       
-       return coreDataSeriesArray
+           do {
+              coreDataSeriesArray = try context.fetch(request)
+           } catch {
+               print(error)
+           }
+       completionHandler(coreDataSeriesArray)
    }
    
    func deleteSeries(series: CoreDataSeries) {

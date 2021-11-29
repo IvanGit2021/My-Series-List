@@ -19,11 +19,9 @@ class RepositoryController {
         }
     }
     
-    /*func getDataFromRepositoryCoreData (completionHandler: @escaping ([CoreDataSeries]) -> Void) {
-        repositoryCoreData.showSeries { series in
-            completionHandler(series)
+    func getDataFromRepositoryCoreData(completionHandler: @escaping ([CoreDataSeries]) -> Void){
+        repositoryCoreData.showSeries { coreDataSeriesArray in
+            completionHandler(coreDataSeriesArray)
         }
-        
-        
-    }*/
+    }
 }
