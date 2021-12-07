@@ -7,19 +7,19 @@
 
 import Foundation
 
-class RepositoryController {
+class SeriesRepository {
     
     let seriesRemoteDataSource = SeriesRemoteDataSource()
     let repositoryCoreData = RepositoryCoreData()
     
-    func getDataFromRepositoryApi(completionHandler: @escaping (Result<Results, Error>) -> Void) {
+    func searchSeries(completionHandler: @escaping (Result<Results, Error>) -> Void) {
         seriesRemoteDataSource.getData(search: "squid") { series in
             completionHandler(series)
         }
     }
     
-    func getDataFromRepositoryCoreData(completionHandler: @escaping ([CoreDataSeries]) -> Void){
-        repositoryCoreData.showSeries { coreDataSeriesArray in
+    func getSeries(completionHandler: @escaping ([CoreDataSeries]) -> Void){
+        repositoryCoreData.getSeries { coreDataSeriesArray in
             completionHandler(coreDataSeriesArray)
         }
     }

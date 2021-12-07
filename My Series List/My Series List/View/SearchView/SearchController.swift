@@ -7,20 +7,20 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, SearchViewDelegate {
+class SearchController: UIViewController {
     
     @IBOutlet weak var listEmptyLabel: UILabel!
-    let searchViewPresenter = SearchViewPresenter()
+    let searchPresenter = SearchPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchViewPresenter.setSearchViewDelegate(self)
-        searchViewPresenter.getDataFromRepository()
+        searchPresenter.setSearchViewDelegate(self)
+        searchPresenter.searchSeries()
     }
 }
 
-extension SearchViewController {
+extension SearchController: SearchView {
     
     func startLoading() {
         print("Start Loading")

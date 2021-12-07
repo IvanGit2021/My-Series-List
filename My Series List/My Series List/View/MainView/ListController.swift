@@ -7,18 +7,18 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MainViewDelegate {
+class ListController: UIViewController {
     
-    let mainViewPresenter = MainViewPresenter()
+    let listPresenter = ListPresenter()
     let repositoryCoreData = RepositoryCoreData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainViewPresenter.setMainViewDelegate(self)
+        listPresenter.setMainViewDelegate(self)
     }
 }
 
-extension MainViewController {
+extension ListController: ListView {
     
     func startLoading() {
         print("Start Loading")

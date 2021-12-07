@@ -7,18 +7,18 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, DetailsViewDelegate {
+class DetailsController: UIViewController {
 
-    let detailsViewPresenter = DetailsViewPresenter()
+    let detailsPresenter = DetailsPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailsViewPresenter.setDetailsViewDelegate(self)
+        detailsPresenter.setDetailsViewDelegate(self)
     }
 }
 
-extension DetailsViewController {
+extension DetailsController: DetailsView {
     
     func startLoading() {
         print("Start Loading")

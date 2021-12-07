@@ -13,7 +13,7 @@ class RepositoryCoreData {
    
     var coreDataSeriesArray = [CoreDataSeries]()
 
-    func addSeries(id: Int32, name: String, overview: String, poster_path: String, vote_average: Double) {
+    func insertSeries(id: Int32, name: String, overview: String, poster_path: String, vote_average: Double) {
        let series = CoreDataSeries(context: context)
        
        series.id = id
@@ -29,7 +29,7 @@ class RepositoryCoreData {
        }
    }
    
-   func showSeries(completionHandler: @escaping ([CoreDataSeries]) -> Void) {
+   func getSeries(completionHandler: @escaping ([CoreDataSeries]) -> Void) {
        let request: NSFetchRequest<CoreDataSeries> = CoreDataSeries.fetchRequest()
            do {
               coreDataSeriesArray = try context.fetch(request)
