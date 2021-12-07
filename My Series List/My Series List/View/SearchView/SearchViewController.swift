@@ -9,12 +9,14 @@ import UIKit
 
 class SearchViewController: UIViewController, SearchViewDelegate {
     
+    @IBOutlet weak var listEmptyLabel: UILabel!
     let searchViewPresenter = SearchViewPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchViewPresenter.setSearchViewDelegate(self)
+        searchViewPresenter.getDataFromRepository()
     }
 }
 
@@ -28,13 +30,13 @@ extension SearchViewController {
         print("Finish Loading")
     }
     
-    func listSeries(_ series: [Series]) {
-        series.forEach { series in
-            print(series)
-        }
+    func listSeries(_ series: Results) {
+        print(series.results)
     }
     
-    func listEmpty() {
-        print("No data found")
+    func listEmpty(_ error: Error) {
+        DispatchQueue.main.async {
+            self.listEmptyLabel.text = "Couldn't retreave your data, please try later.\nError: \(error.localizedDescription)"
+        }
     }
 }

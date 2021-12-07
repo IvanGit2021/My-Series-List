@@ -9,11 +9,11 @@ import Foundation
 
 class RepositoryController {
     
-    let repositoryApi = RepositoryApi()
+    let seriesRemoteDataSource = SeriesRemoteDataSource()
     let repositoryCoreData = RepositoryCoreData()
     
-    func getDataFromRepositoryApi(completionHandler: @escaping ([Series]) -> Void) {
-        repositoryApi.getData(search: "squid") { series in
+    func getDataFromRepositoryApi(completionHandler: @escaping (Result<Results, Error>) -> Void) {
+        seriesRemoteDataSource.getData(search: "squid") { series in
             completionHandler(series)
         }
     }

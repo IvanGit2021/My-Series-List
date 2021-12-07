@@ -11,8 +11,8 @@ protocol SearchViewDelegate: NSObjectProtocol {
     
     func startLoading()
     func finishLoading()
-    func listSeries(_ series: [Series])
-    func listEmpty()
+    func listSeries(_ series: Results)
+    func listEmpty(_ error: Error)
 }
 
 class SearchViewPresenter {
@@ -26,13 +26,15 @@ class SearchViewPresenter {
     
     func getDataFromRepository() {
         repositoryController.getDataFromRepositoryApi(completionHandler: { series in
-            if series.count != 0 {
+            switch series {
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.searchViewDelegate?.listEmpty(error)
+            case .success(let series):
                 self.searchViewDelegate?.startLoading()
                 self.searchViewDelegate?.listSeries(series)
                 self.searchViewDelegate?.finishLoading()
-            } else {
-                self.searchViewDelegate?.listEmpty()
             }
-        })
+         })
     }
 }
