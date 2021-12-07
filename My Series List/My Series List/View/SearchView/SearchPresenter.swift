@@ -24,8 +24,8 @@ class SearchPresenter {
         self.searchView = searchViewDelegate
     }
     
-    func searchSeries() {
-        seriesRepository.searchSeries(completionHandler: { series in
+    func searchSeries(search: String) {
+        seriesRepository.searchSeries(search: search, completionHandler: { series in
             switch series {
             case .failure(let error):
                 print(error.localizedDescription)

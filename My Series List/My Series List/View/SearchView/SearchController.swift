@@ -16,7 +16,7 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         
         searchPresenter.setSearchViewDelegate(self)
-        searchPresenter.searchSeries()
+        searchPresenter.searchSeries(search: "game")
     }
 }
 

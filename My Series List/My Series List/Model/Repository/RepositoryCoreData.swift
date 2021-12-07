@@ -13,14 +13,14 @@ class RepositoryCoreData {
    
     var coreDataSeriesArray = [CoreDataSeries]()
 
-    func insertSeries(id: Int32, name: String, overview: String, poster_path: String, vote_average: Double) {
+    func insertSeries(id: Int32, name: String, overview: String, posterPath: String, voteAverage: Double) {
        let series = CoreDataSeries(context: context)
        
        series.id = id
        series.name = name
        series.overview = overview
-       series.poster_path = poster_path
-       series.vote_average = vote_average
+       series.posterPath = posterPath
+       series.voteAverage = voteAverage
        
        do {
            try context.save()
