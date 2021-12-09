@@ -10,7 +10,7 @@ import Foundation
 class SeriesRepository {
     
     let seriesRemoteDataSource = SeriesRemoteDataSource()
-    let repositoryCoreData = RepositoryCoreData()
+    let repositoryCoreData = SeriesLocalDataSource()
     
     func searchSeries(search: String, completionHandler: @escaping (Result<Results, Error>) -> Void) {
         seriesRemoteDataSource.getData(search: search) { series in
@@ -18,7 +18,7 @@ class SeriesRepository {
         }
     }
     
-    func getSeries(completionHandler: @escaping ([CoreDataSeries]) -> Void){
+    func getSeries(completionHandler: @escaping (Result<[CoreDataSeries], Error>) -> Void){
         repositoryCoreData.getSeries { coreDataSeriesArray in
             completionHandler(coreDataSeriesArray)
         }

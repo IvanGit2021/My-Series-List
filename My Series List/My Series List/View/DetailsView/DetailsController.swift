@@ -14,7 +14,7 @@ class DetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailsPresenter.setDetailsViewDelegate(self)
+        detailsPresenter.detailsView = self
     }
 }
 

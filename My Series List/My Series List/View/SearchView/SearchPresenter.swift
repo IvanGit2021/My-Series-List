@@ -20,10 +20,6 @@ class SearchPresenter {
     var searchView: SearchView?
     let seriesRepository = SeriesRepository()
     
-    func setSearchViewDelegate(_ searchViewDelegate: SearchView?){
-        self.searchView = searchViewDelegate
-    }
-    
     func searchSeries(search: String) {
         seriesRepository.searchSeries(search: search, completionHandler: { series in
             switch series {

@@ -12,26 +12,24 @@ protocol ListView: NSObjectProtocol {
     func startLoading()
     func finishLoading()
     func listSeries(_ series: [CoreDataSeries])
-    func listEmpty()
+    func listEmpty(_ error: Error)
 }
 
 class ListPresenter {
     
     var listView: ListView?
     let seriesRepository = SeriesRepository()
-    
-    func setMainViewDelegate(_ mainViewDelegate: ListView?){
-        self.listView = mainViewDelegate
-    }
-    
+   
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { coreDataSeriesArray in
-            if coreDataSeriesArray.count != 0 {
+            switch coreDataSeriesArray {
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.listView?.listEmpty(error)
+            case .success(let coreDataSeriesArray):
                 self.listView?.startLoading()
                 self.listView?.listSeries(coreDataSeriesArray)
                 self.listView?.finishLoading()
-            } else {
-                self.listView?.listEmpty()
             }
         })
     }

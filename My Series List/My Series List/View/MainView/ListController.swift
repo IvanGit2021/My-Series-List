@@ -9,12 +9,12 @@ import UIKit
 
 class ListController: UIViewController {
     
+    @IBOutlet weak var listEmptyLabel: UILabel!
     let listPresenter = ListPresenter()
-    let repositoryCoreData = RepositoryCoreData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listPresenter.setMainViewDelegate(self)
+        listPresenter.listView = self
     }
 }
 
@@ -28,13 +28,13 @@ extension ListController: ListView {
         print("Finish Loading")
     }
     
-    func listSeries(_ series: [CoreDataSeries]) {
-        series.forEach { coreDataSeriesArray in
-            printContent(coreDataSeriesArray)
-        }
+    func listSeries(_ coreDataSeriesArray: [CoreDataSeries]) {
+        print(coreDataSeriesArray)
     }
     
-    func listEmpty() {
-        print("No data found")
+    func listEmpty(_ error: Error) {
+        DispatchQueue.main.async {
+            self.listEmptyLabel.text = "Couldn't retreave your data, please try later.\nError: \(error.localizedDescription)"
+        }
     }
 }

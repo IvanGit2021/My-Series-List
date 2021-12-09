@@ -19,12 +19,9 @@ class DetailsPresenter {
     
     var detailsView: DetailsView?
     let seriesRepository = SeriesRepository()
+}
     
-    func setDetailsViewDelegate(_ detailsViewDelegate: DetailsView?){
-        self.detailsView = detailsViewDelegate
-    }
-    
-    func getSeries() {
+    /*func getSeries() {
         seriesRepository.searchSeries(completionHandler: { series in
             if series.count != 0 {
                 self.detailsView?.startLoading()
@@ -34,5 +31,5 @@ class DetailsPresenter {
                 self.detailsView?.listEmpty()
             }
         })
-    }
-}
+    }*/
+

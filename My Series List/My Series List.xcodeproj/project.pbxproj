@@ -21,7 +21,7 @@
 		9C61ACA827466BA900AAB574 /* SeriesRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* SeriesRemoteDataSource.swift */; };
 		9CB46DFC2754F3D800382FDD /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB46DFB2754F3D800382FDD /* DetailsPresenter.swift */; };
 		9CB46DFE2754F3EF00382FDD /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB46DFD2754F3EF00382FDD /* SearchPresenter.swift */; };
-		9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */; };
+		9CD229542747CC9900BD5735 /* SeriesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* SeriesLocalDataSource.swift */; };
 		9CD229592748269800BD5735 /* SeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229582748269800BD5735 /* SeriesRepository.swift */; };
 		9CFF4F71274E8CCA00279BF8 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF4F70274E8CCA00279BF8 /* ListPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +43,7 @@
 		9C61ACA727466BA900AAB574 /* SeriesRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRemoteDataSource.swift; sourceTree = "<group>"; };
 		9CB46DFB2754F3D800382FDD /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		9CB46DFD2754F3EF00382FDD /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
-		9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCoreData.swift; sourceTree = "<group>"; };
+		9CD229532747CC9900BD5735 /* SeriesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesLocalDataSource.swift; sourceTree = "<group>"; };
 		9CD229582748269800BD5735 /* SeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepository.swift; sourceTree = "<group>"; };
 		9CFF4F70274E8CCA00279BF8 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				9C61ACA727466BA900AAB574 /* SeriesRemoteDataSource.swift */,
-				9CD229532747CC9900BD5735 /* RepositoryCoreData.swift */,
+				9CD229532747CC9900BD5735 /* SeriesLocalDataSource.swift */,
 				9CD229582748269800BD5735 /* SeriesRepository.swift */,
 			);
 			path = Repository;
@@ -225,7 +225,7 @@
 				9CB46DFE2754F3EF00382FDD /* SearchPresenter.swift in Sources */,
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
-				9CD229542747CC9900BD5735 /* RepositoryCoreData.swift in Sources */,
+				9CD229542747CC9900BD5735 /* SeriesLocalDataSource.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
 				9CFF4F71274E8CCA00279BF8 /* ListPresenter.swift in Sources */,
 				9C61ACA4274669A600AAB574 /* DetailsController.swift in Sources */,

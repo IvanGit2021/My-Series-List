@@ -15,7 +15,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchPresenter.setSearchViewDelegate(self)
+        searchPresenter.searchView = self
         searchPresenter.searchSeries(search: "game")
     }
 }
