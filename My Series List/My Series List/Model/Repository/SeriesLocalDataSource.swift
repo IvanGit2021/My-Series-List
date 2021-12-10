@@ -11,10 +11,10 @@ import UIKit
 
 class SeriesLocalDataSource {
    
-    var coreDataSeriesArray = [CoreDataSeries]()
+    var coreDataSeries = [Series]()
     
-    func insertSeries(series: CoreDataSeries, completionHandler: @escaping (Result<String, Error>) -> Void) {
-        let newSeries = CoreDataSeries(context: context)
+    func insertSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        let newSeries = Series(context: context)
         
         newSeries.id = series.id
         newSeries.name = series.name
@@ -30,17 +30,17 @@ class SeriesLocalDataSource {
         }
     }
     
-    func getSeries(completionHandler: @escaping (Result<[CoreDataSeries], Error>) -> Void) {
-        let request: NSFetchRequest<CoreDataSeries> = CoreDataSeries.fetchRequest()
+    func getSeries(completionHandler: @escaping (Result<[Series], Error>) -> Void) {
+        let request: NSFetchRequest<Series> = Series.fetchRequest()
         do {
-            coreDataSeriesArray = try context.fetch(request)
-            completionHandler(.success(coreDataSeriesArray))
+            coreDataSeries = try context.fetch(request)
+            completionHandler(.success(coreDataSeries))
         } catch {
             completionHandler(.failure(error))
         }
     }
    
-    func deleteSeries(series: CoreDataSeries, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func deleteSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         context.delete(series)
         do {
             try context.save()

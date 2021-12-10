@@ -15,6 +15,7 @@ class ListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listPresenter.listView = self
+        listPresenter.getSeries()
     }
 }
 
@@ -28,8 +29,8 @@ extension ListController: ListView {
         print("Finish Loading")
     }
     
-    func listSeries(_ coreDataSeriesArray: [CoreDataSeries]) {
-        print(coreDataSeriesArray)
+    func listSeries(_ coreDataSeries: [Series]) {
+        print(coreDataSeries)
     }
     
     func listEmpty(_ error: Error) {

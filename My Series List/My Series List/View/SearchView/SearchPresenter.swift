@@ -11,7 +11,7 @@ protocol SearchView: NSObjectProtocol {
     
     func startLoading()
     func finishLoading()
-    func listSeries(_ series: Results)
+    func listSeries(_ series: Api.Results)
     func listEmpty(_ error: Error)
 }
 

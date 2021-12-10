@@ -30,7 +30,7 @@ extension SearchController: SearchView {
         print("Finish Loading")
     }
     
-    func listSeries(_ series: Results) {
+    func listSeries(_ series: Api.Results) {
         print(series.results)
     }
     
