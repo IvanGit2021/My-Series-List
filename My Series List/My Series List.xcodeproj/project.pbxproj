@@ -19,6 +19,7 @@
 		9C61ACA4274669A600AAB574 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA3274669A600AAB574 /* DetailsController.swift */; };
 		9C61ACA627466B3700AAB574 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA527466B3700AAB574 /* SeriesModel.swift */; };
 		9C61ACA827466BA900AAB574 /* SeriesRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61ACA727466BA900AAB574 /* SeriesRemoteDataSource.swift */; };
+		9C6C1EF6276A0DEB00D03154 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C1EF5276A0DEB00D03154 /* SearchCollectionViewCell.swift */; };
 		9C7779A7276378B2002A4371 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7779A6276378B2002A4371 /* ListCollectionViewCell.swift */; };
 		9C7779AA27639A10002A4371 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9C7779A927639A10002A4371 /* Kingfisher */; };
 		9CB46DFC2754F3D800382FDD /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB46DFB2754F3D800382FDD /* DetailsPresenter.swift */; };
@@ -43,6 +44,7 @@
 		9C61ACA3274669A600AAB574 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		9C61ACA527466B3700AAB574 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
 		9C61ACA727466BA900AAB574 /* SeriesRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRemoteDataSource.swift; sourceTree = "<group>"; };
+		9C6C1EF5276A0DEB00D03154 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C7779A6276378B2002A4371 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CB46DFB2754F3D800382FDD /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		9CB46DFD2754F3EF00382FDD /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -128,8 +130,9 @@
 		9CB46DF92754F39C00382FDD /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				9C61ACA12746699B00AAB574 /* SearchController.swift */,
 				9CB46DFD2754F3EF00382FDD /* SearchPresenter.swift */,
+				9C61ACA12746699B00AAB574 /* SearchController.swift */,
+				9C6C1EF5276A0DEB00D03154 /* SearchCollectionViewCell.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				9CB46DFE2754F3EF00382FDD /* SearchPresenter.swift in Sources */,
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
+				9C6C1EF6276A0DEB00D03154 /* SearchCollectionViewCell.swift in Sources */,
 				9C7779A7276378B2002A4371 /* ListCollectionViewCell.swift in Sources */,
 				9CD229542747CC9900BD5735 /* SeriesLocalDataSource.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
