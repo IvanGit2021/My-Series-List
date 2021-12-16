@@ -13,13 +13,15 @@ class SearchController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var listEmptyLabel: UILabel!
     let searchPresenter = SearchPresenter()
-    let seriesRepository = SeriesRepository()
     var series: [Api.Series] = []
+    let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchPresenter.searchView = self
-        searchPresenter.searchSeries()
+        searchPresenter.searchSeries(search: "")
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
 }
 
@@ -76,4 +78,18 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         print(series[indexPath.row])
     }
 }
+
+extension SearchController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        searchPresenter.searchSeries(search: text)
+        collectionView.reloadData()
+    }
+}
+
+    
+    
+    
+
      
