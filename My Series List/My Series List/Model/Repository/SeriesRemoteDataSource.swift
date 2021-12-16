@@ -9,10 +9,11 @@ import Foundation
 
 class SeriesRemoteDataSource {
     
-    let url = "https://api.themoviedb.org/3/search/tv?api_key=0fbc13d4f4bb3dcc23cb30a1a289d426&language=en-US&page=1&include_adult=false&query="
+    let urlSearch = "https://api.themoviedb.org/3/search/movie?api_key=0fbc13d4f4bb3dcc23cb30a1a289d426&query="
+    let urlPopular = "https://api.themoviedb.org/3/movie/popular?api_key=0fbc13d4f4bb3dcc23cb30a1a289d426&language=en-US&page=1"
     
     func getData(search: String, completionHandler: @escaping (Result<Api.Results, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: URL (string: url + search )!, completionHandler: { data, response, error in
+        let task = URLSession.shared.dataTask(with: URL (string: search == "" ? urlPopular : urlSearch + search )! , completionHandler: { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data {
