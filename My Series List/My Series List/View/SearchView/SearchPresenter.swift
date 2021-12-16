@@ -21,8 +21,9 @@ class SearchPresenter {
     let seriesRepository = SeriesRepository()
     var isChecked = true
     
-    func searchSeries() {
-        seriesRepository.searchSeries(completionHandler: { series in
+    func searchSeries(search: String) {
+        let replacedText = search.replacingOccurrences(of: " ", with: "+")
+        seriesRepository.searchSeries(search: replacedText, completionHandler: { series in
             switch series {
             case .failure(let error):
                 print(error.localizedDescription)
