@@ -106,18 +106,18 @@
 				9CB46DFA2754F3A800382FDD /* DetailsView */,
 				9CB46DF92754F39C00382FDD /* SearchView */,
 				9C61AC892746686900AAB574 /* ViewController.swift */,
-				9C9035852754ECCD007655C7 /* MainView */,
+				9C9035852754ECCD007655C7 /* ListView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		9C9035852754ECCD007655C7 /* MainView */ = {
+		9C9035852754ECCD007655C7 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
 				9CFF4F70274E8CCA00279BF8 /* ListPresenter.swift */,
 				9C61AC9F2746698E00AAB574 /* ListController.swift */,
 			);
-			path = MainView;
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		9CB46DF92754F39C00382FDD /* SearchView */ = {
