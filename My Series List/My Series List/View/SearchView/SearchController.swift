@@ -21,6 +21,7 @@ class SearchController: UIViewController {
         searchPresenter.searchView = self
         searchPresenter.searchSeries(search: "")
         navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
     }
 }
 
@@ -94,12 +95,13 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     }
 }
 
-extension SearchController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
+extension SearchController: UISearchBarDelegate{
+ 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
         searchPresenter.searchSeries(search: text)
         collectionView.reloadData()
+        emptyLabel.isHidden = true
     }
 }
 
