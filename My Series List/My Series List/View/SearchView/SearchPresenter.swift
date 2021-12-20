@@ -12,25 +12,30 @@ protocol SearchView: NSObjectProtocol {
     func startLoading()
     func finishLoading()
     func listSeries(_ series: [Api.Series])
-    func listEmpty(_ error: Error)
+    func listError(_ error: Error)
+    func listEmpty()
 }
 
 class SearchPresenter {
     
     var searchView: SearchView?
     let seriesRepository = SeriesRepository()
+    var series: [Api.Series] = []
     var isChecked = true
     
     func searchSeries(search: String) {
         let replacedText = search.replacingOccurrences(of: " ", with: "+")
-        seriesRepository.searchSeries(search: replacedText, completionHandler: { series in
-            switch series {
+        seriesRepository.searchSeries(search: replacedText, completionHandler: { apiSeries in
+            switch apiSeries {
             case .failure(let error):
-                print(error.localizedDescription)
-                self.searchView?.listEmpty(error)
-            case .success(let series):
+                self.searchView?.listError(error)
+            case .success(let apiSeries):
+                self.series = apiSeries.results
+                if self.series.isEmpty {
+                    self.searchView?.listEmpty()
+                }
                 self.searchView?.startLoading()
-                let sortedSeries = series.results.sorted(by: { $0.title! < $1.title! })
+                let sortedSeries = self.series.sorted(by: { $0.title! < $1.title! })
                 self.searchView?.listSeries(sortedSeries)
                 self.searchView?.finishLoading()
             }

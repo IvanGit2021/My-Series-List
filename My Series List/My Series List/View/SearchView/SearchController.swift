@@ -11,7 +11,7 @@ import Kingfisher
 class SearchController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var listEmptyLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
     let searchPresenter = SearchPresenter()
     var series: [Api.Series] = []
     let searchController = UISearchController()
@@ -20,7 +20,6 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         searchPresenter.searchView = self
         searchPresenter.searchSeries(search: "")
-        searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
     }
 }
@@ -41,12 +40,28 @@ extension SearchController: SearchView {
             self.collectionView.delegate = self
         }
         self.series = series
-        
-}
-    
-    func listEmpty(_ error: Error) {
         DispatchQueue.main.async {
-            self.listEmptyLabel.text = "Couldn't retreave your data, please try later.\nError: \(error.localizedDescription)"
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
+    func listError(_ error: Error) {
+        DispatchQueue.main.async { [self] in
+            emptyLabel.text = "Couldn't retreave your data, please try again later.\nError: \(error.localizedDescription)"
+            emptyLabel.textAlignment = .center
+            view.addSubview(emptyLabel)
+            navigationItem.searchController?.isActive = true
+        }
+    }
+    
+    func listEmpty() {
+        DispatchQueue.main.async { [self] in
+            emptyLabel.text = "The List is Empty, please search some Series."
+            emptyLabel.textAlignment = .center
+            view.addSubview(emptyLabel)
+            navigationItem.searchController?.isActive = true
+            
         }
     }
 }

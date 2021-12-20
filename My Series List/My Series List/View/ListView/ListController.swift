@@ -41,12 +41,14 @@ extension ListController: ListView {
     func listError(_ error: Error) {
         DispatchQueue.main.async {
             self.emptyLabel.text = "Couldn't retrieve your data, please try again later."
+            self.emptyLabel.textAlignment = .center
             self.view.addSubview(self.emptyLabel)
         }
     }
     
     func listEmpty() {
         emptyLabel.text = "The List is Empty, please insert some Series."
+        emptyLabel.textAlignment = .center
         view.addSubview(emptyLabel)
     }
 }
