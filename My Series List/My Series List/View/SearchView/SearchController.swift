@@ -104,6 +104,10 @@ extension SearchController: UISearchBarDelegate{
         collectionView.reloadData()
         emptyLabel.isHidden = true
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchPresenter.searchSeries(search: "")
+    }
 }
 
     
