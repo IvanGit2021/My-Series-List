@@ -92,6 +92,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(series[indexPath.row])
+        performSegue(withIdentifier: "goToDetails", sender: self)
     }
 }
 

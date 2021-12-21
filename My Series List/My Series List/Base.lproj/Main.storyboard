@@ -203,7 +203,7 @@
                     <connections>
                         <outlet property="collectionView" destination="TTA-j2-bEO" id="5cI-XR-z1T"/>
                         <outlet property="emptyLabel" destination="DTr-9Z-zrw" id="3bz-qX-eAN"/>
-                        <segue destination="ph1-ll-bSO" kind="show" identifier="goToDetails" id="V3D-SA-nT4"/>
+                        <segue destination="ph1-ll-bSO" kind="show" identifier="goToDetails" id="g0Y-M8-vmz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfW-Lh-uVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -227,7 +227,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6JH-6T-Nj5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.15807771679999999" green="0.15807771679999999" blue="0.15807771679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="CAR-W0-y2X"/>
                 </viewController>
