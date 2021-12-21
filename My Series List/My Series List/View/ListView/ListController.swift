@@ -65,7 +65,7 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         let processor = RoundCornerImageProcessor(cornerRadius: 10)
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
-        cell.listTitle.text = series[indexPath.row].name
+        cell.listTitle.text = series[indexPath.row].title
         cell.listThumbnail.kf.setImage(with: url, options: [.processor(processor)])
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
         cell.buttonBinding = { [self] in

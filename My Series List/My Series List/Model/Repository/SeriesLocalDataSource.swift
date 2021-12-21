@@ -17,7 +17,7 @@ class SeriesLocalDataSource {
         let newSeries = Series(context: context)
         
         newSeries.id = series.id
-        newSeries.name = series.name
+        newSeries.title = series.title
         newSeries.overview = series.overview
         newSeries.posterPath = series.posterPath
         newSeries.voteAverage = series.voteAverage
