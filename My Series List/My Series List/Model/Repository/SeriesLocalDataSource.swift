@@ -13,14 +13,15 @@ class SeriesLocalDataSource {
    
     var coreDataSeries = [Series]()
     
-    func insertSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func insertSeries(series: Api.Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         let newSeries = Series(context: context)
         
-        newSeries.id = series.id
+        newSeries.id = series.id!
         newSeries.title = series.title
-        newSeries.overview = series.overview
+        newSeries.overView = series.overView
         newSeries.posterPath = series.posterPath
-        newSeries.voteAverage = series.voteAverage
+        newSeries.voteAverage = series.voteAverage!
+        newSeries.isSaved = series.isSaved ?? true
         
         do {
             try context.save()
