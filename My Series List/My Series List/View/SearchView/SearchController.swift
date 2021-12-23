@@ -74,17 +74,23 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let processor = RoundCornerImageProcessor(cornerRadius: 10)
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! SearchCollectionViewCell
         
         cell.searchTitle.text = series[indexPath.row].title
         if series[indexPath.row].posterPath != nil {
             let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
-            cell.searchThumbnail.kf.setImage(with: url, options: [.processor(processor)])
+            cell.searchThumbnail.kf.setImage(with: url)
         } else {
-            cell.searchThumbnail.image = UIImage(named: "noImage")        }
-        cell.searchCheckMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
+            cell.searchThumbnail.image = UIImage(named: "noImage")
+        }
+        if series[indexPath.row].isSaved == true {
+            cell.searchCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
+        } else {
+            cell.searchCheckMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
+        }
+        cell.buttonBinding = { sender in
+            self.searchPresenter.changeListCheckMark(cell.searchCheckMark, indexPath: indexPath)
+        }
         cell.searchTitle.text = series[indexPath.row].title
        
         return cell
