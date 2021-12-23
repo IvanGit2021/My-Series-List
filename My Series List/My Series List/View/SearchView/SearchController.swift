@@ -22,6 +22,7 @@ class SearchController: UIViewController {
         searchPresenter.searchSeries(search: "")
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        emptyLabel.isHidden = true
     }
 }
 
@@ -44,7 +45,6 @@ extension SearchController: SearchView {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        
     }
     
     func listError(_ error: Error) {
@@ -53,16 +53,14 @@ extension SearchController: SearchView {
             emptyLabel.textAlignment = .center
             view.addSubview(emptyLabel)
             navigationItem.searchController?.isActive = true
+            emptyLabel.isHidden = false
         }
     }
     
     func listEmpty() {
         DispatchQueue.main.async { [self] in
-            emptyLabel.text = "The List is Empty, please search some Series."
-            emptyLabel.textAlignment = .center
-            view.addSubview(emptyLabel)
-            navigationItem.searchController?.isActive = true
-            
+            emptyLabel.text = "Please search with another title."
+            emptyLabel.isHidden = false
         }
     }
 }
@@ -97,7 +95,6 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(series[indexPath.row])
         performSegue(withIdentifier: "goToDetails", sender: self)
     }
 }
@@ -113,6 +110,7 @@ extension SearchController: UISearchBarDelegate{
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchPresenter.searchSeries(search: "")
+        emptyLabel.isHidden = true
     }
 }
 

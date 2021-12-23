@@ -14,12 +14,22 @@ class ListController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     let listPresenter = ListPresenter()
     var series: [Series] = []
+    let seriesLocalDataSource = SeriesLocalDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         listPresenter.listView = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         listPresenter.getSeries()
-      }
+        listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
 }
 
 extension ListController: ListView {
@@ -35,6 +45,7 @@ extension ListController: ListView {
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
+        emptyLabel.isHidden = true
         self.series = series
     }
     
@@ -47,9 +58,7 @@ extension ListController: ListView {
     }
     
     func listEmpty() {
-        emptyLabel.text = "The List is Empty, please insert some Series."
-        emptyLabel.textAlignment = .center
-        view.addSubview(emptyLabel)
+        emptyLabel.isHidden = false
     }
 }
 
@@ -62,16 +71,15 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
-        let processor = RoundCornerImageProcessor(cornerRadius: 10)
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
         cell.listTitle.text = series[indexPath.row].title
-        cell.listThumbnail.kf.setImage(with: url, options: [.processor(processor)])
+        cell.listThumbnail.kf.setImage(with: url)
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
         cell.buttonBinding = { [self] in
             listPresenter.deleteSeries(series: series[indexPath.row])
             series.remove(at: indexPath.row)
-            collectionView.reloadData()
+            listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
         }
         return cell
     }
