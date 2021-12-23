@@ -56,6 +56,13 @@ class ListPresenter: NSObject {
             isChecked = true
         }
     }
+    
+    func reloadCollectionView(series: [Series], collectionView: UICollectionView) {
+        if series.count == 0 {
+            listView?.listEmpty()
+        }
+        collectionView.reloadData()
+    }
 }
 
 
