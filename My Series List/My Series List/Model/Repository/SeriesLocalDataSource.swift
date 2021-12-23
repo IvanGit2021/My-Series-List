@@ -21,7 +21,7 @@ class SeriesLocalDataSource {
         newSeries.overView = series.overView
         newSeries.posterPath = series.posterPath
         newSeries.voteAverage = series.voteAverage!
-        newSeries.isSaved = series.isSaved ?? true
+        newSeries.isSaved = series.isSaved 
         
         do {
             try context.save()
