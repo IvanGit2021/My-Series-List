@@ -26,10 +26,6 @@ class ListController: UIViewController {
         listPresenter.getSeries()
         listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
 }
 
 extension ListController: ListView {
