@@ -9,7 +9,6 @@ import UIKit
 
 class ListCollectionViewCell: UICollectionViewCell {
     
-  
     @IBOutlet weak var listThumbnail: UIImageView!
     @IBOutlet weak var listTitle: UILabel!
     @IBOutlet weak var listCheckMark: UIButton!

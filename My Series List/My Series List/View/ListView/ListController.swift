@@ -19,7 +19,7 @@ class ListController: UIViewController {
         super.viewDidLoad()
         listPresenter.listView = self
         listPresenter.getSeries()
-      }
+    }
 }
 
 extension ListController: ListView {
@@ -53,7 +53,6 @@ extension ListController: ListView {
 
 extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
  
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return series.count
     }
