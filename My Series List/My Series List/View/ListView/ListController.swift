@@ -25,11 +25,9 @@ class ListController: UIViewController {
 extension ListController: ListView {
     
     func startLoading() {
-        print("Start Loading")
     }
     
     func finishLoading() {
-        print("Finish Loading")
     }
     
     func listSeries(_ series: [Series]) {
