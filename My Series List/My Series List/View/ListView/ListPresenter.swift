@@ -25,12 +25,12 @@ class ListPresenter: NSObject {
     var series: [Series] = []
     
     func getSeries() {
-        seriesRepository.getSeries(completionHandler: { coreDataSeries in
-            switch coreDataSeries {
+        seriesRepository.getSeries(completionHandler: { results in
+            switch results {
             case .failure(let error):
                 self.listView?.listError(error)
-            case .success(let coreDataSeries):
-                self.series = coreDataSeries
+            case .success(let seriesCoreData):
+                self.series = seriesCoreData
                 if self.series.isEmpty {
                     self.listView?.listEmpty()
                 }

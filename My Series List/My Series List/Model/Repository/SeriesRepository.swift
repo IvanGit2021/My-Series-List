@@ -13,14 +13,14 @@ class SeriesRepository {
     let seriesLocalDataSource = SeriesLocalDataSource()
     
     func searchSeries(search: String, completionHandler: @escaping (Result<Api.Results, Error>) -> Void) {
-        seriesRemoteDataSource.getData(search: search) { series in
-            completionHandler(series)
+        seriesRemoteDataSource.getData(search: search) { results in
+            completionHandler(results)
         }
     }
     
     func getSeries(completionHandler: @escaping (Result<[Series], Error>) -> Void){
-        seriesLocalDataSource.getSeries { coreDataSeries in
-            completionHandler(coreDataSeries)
+        seriesLocalDataSource.getSeries { results in
+            completionHandler(results)
         }
     }
     
