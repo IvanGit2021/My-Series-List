@@ -33,10 +33,11 @@ class ListPresenter: NSObject {
                 self.series = coreDataSeries
                 if self.series.isEmpty {
                     self.listView?.listEmpty()
-                }
+                } else {
                 self.listView?.startLoading()
                 self.listView?.listSeries(self.series)
                 self.listView?.finishLoading()
+                }
             }
         })
     }
