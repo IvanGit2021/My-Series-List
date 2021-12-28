@@ -49,8 +49,8 @@ extension ListController: ListView {
     }
 }
 
-extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
- 
+extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, ListCell {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return series.count
     }
@@ -63,15 +63,22 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.listTitle.text = series[indexPath.row].name
         cell.listThumbnail.kf.setImage(with: url, options: [.processor(processor)])
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-        cell.buttonBinding = { [self] in
-            listPresenter.deleteSeries(series: series[indexPath.row])
-            series.remove(at: indexPath.row)
-            collectionView.reloadData()
-        }
+        cell.listCell = self
+        cell.indexPath = indexPath
+       
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(series[indexPath.row])
+    }
+    
+    func listButtonPressed(at indexPath: IndexPath) {
+        listPresenter.deleteSeries(series: series[indexPath.row])
+        series.remove(at: indexPath.row)
+        if series.count == 0 {
+            listEmpty()
+        }
+        collectionView.reloadData()
     }
 }
