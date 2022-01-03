@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import UIKit
 
 protocol ListView: NSObjectProtocol {
@@ -26,10 +27,12 @@ class ListPresenter: NSObject {
         self.listView = listView
     }
     
+
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { coreDataSeries in
             switch coreDataSeries {
             case .failure(let error):
+
                 self.listView.listError(error)
             case .success(let coreDataSeries):
                 self.series = coreDataSeries

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import Kingfisher
 
 class ListController: UIViewController {
@@ -14,7 +15,7 @@ class ListController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     let listPresenter = ListPresenter()
     var series: [Series] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         listPresenter.listView = self
@@ -24,6 +25,7 @@ class ListController: UIViewController {
 
 extension ListController: ListView {
     
+
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
