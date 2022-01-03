@@ -24,14 +24,14 @@ class SeriesRepository {
         }
     }
     
-    func insertSeries(series: Api.Series) {
-        seriesLocalDataSource.insertSeries(series: series) { results in
-        }
-    }
-    
     func deleteSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         seriesLocalDataSource.deleteSeries(series: series) { results in
             print(results)
+        }
+    }
+    
+    func insertSeries(series: Api.Series) {
+        seriesLocalDataSource.insertSeries(series: series) { results in
         }
     }
 }

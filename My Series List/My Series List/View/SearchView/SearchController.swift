@@ -47,19 +47,19 @@ extension SearchController: SearchView {
         }
     }
     
+    func listEmpty() {
+        DispatchQueue.main.async { [self] in
+            emptyLabel.text = "Please search with another title."
+            emptyLabel.isHidden = false
+        }
+    }
+    
     func listError(_ error: Error) {
         DispatchQueue.main.async { [self] in
             emptyLabel.text = "Couldn't retreave your data, please try again later.\nError: \(error.localizedDescription)"
             emptyLabel.textAlignment = .center
             view.addSubview(emptyLabel)
             navigationItem.searchController?.isActive = true
-            emptyLabel.isHidden = false
-        }
-    }
-    
-    func listEmpty() {
-        DispatchQueue.main.async { [self] in
-            emptyLabel.text = "Please search with another title."
             emptyLabel.isHidden = false
         }
     }
