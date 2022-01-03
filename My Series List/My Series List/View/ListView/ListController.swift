@@ -24,12 +24,6 @@ class ListController: UIViewController {
 
 extension ListController: ListView {
     
-    func startLoading() {
-    }
-    
-    func finishLoading() {
-    }
-    
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
