@@ -60,8 +60,7 @@ class SearchPresenter {
                 case .success(let seriesCoreData):
                     for series in seriesCoreData {
                         if series.id == self.seriesSorted[indexPath.row].id {
-                            self.seriesRepository.deleteSeries(series: series) { results in
-                            }
+                            self.seriesRepository.deleteSeries(series: series) 
                         }
                     }
                 }
