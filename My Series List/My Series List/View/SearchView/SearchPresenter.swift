@@ -74,10 +74,11 @@ class SearchPresenter {
             case .failure(_):
                 break
             case .success(let seriesCoreData):
-                for seriesA in seriesCoreData {
-                    for seriesB in seriesArray {
-                        if seriesA.id == seriesB.id! {
-                            seriesB.isSaved = true
+                for seriesA in seriesArray {
+                    for seriesB in seriesCoreData {
+                        if seriesA.id == seriesB.id {
+                            seriesA.isSaved = true
+                            break
                         }
                     }
                 }
