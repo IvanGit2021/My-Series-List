@@ -7,30 +7,54 @@
 
 import Foundation
 
+import UIKit
+
 protocol ListView: NSObjectProtocol {
     
-    func startLoading()
-    func finishLoading()
     func listSeries(_ series: [Series])
-    func listEmpty(_ error: Error)
+    func listError(_ error: Error)
+    func listEmpty()
 }
 
-class ListPresenter {
+class ListPresenter: NSObject {
     
-    var listView: ListView?
+    var listView: ListView
     let seriesRepository = SeriesRepository()
-   
+    var isChecked = true
+    var series: [Series] = []
+    
+    init (listView: ListView) {
+        self.listView = listView
+    }
+    
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { coreDataSeries in
             switch coreDataSeries {
             case .failure(let error):
-                print(error.localizedDescription)
-                self.listView?.listEmpty(error)
+                self.listView.listError(error)
             case .success(let coreDataSeries):
-                self.listView?.startLoading()
-                self.listView?.listSeries(coreDataSeries)
-                self.listView?.finishLoading()
+                self.series = coreDataSeries
+                if self.series.isEmpty {
+                    self.listView.listEmpty()
+                } else {
+                    self.listView.listSeries(self.series)
+                }
             }
         })
+    }
+    
+    func deleteSeries(series: Series) {
+        seriesRepository.deleteSeries(series: series) { results in
+        }
+    }
+    
+    func changeListCheckMark(_ checkMark: UIButton) {
+        if isChecked {
+            checkMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
+            isChecked = false
+        } else {
+            checkMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
+            isChecked = true
+        }
     }
 }
