@@ -27,12 +27,10 @@ class ListPresenter: NSObject {
         self.listView = listView
     }
     
-
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { coreDataSeries in
             switch coreDataSeries {
             case .failure(let error):
-
                 self.listView.listError(error)
             case .success(let coreDataSeries):
                 self.series = coreDataSeries
@@ -54,7 +52,6 @@ class ListPresenter: NSObject {
         if isChecked {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
             isChecked = false
-            
         } else {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
             isChecked = true
