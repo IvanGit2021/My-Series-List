@@ -113,9 +113,3 @@ extension SearchController: UISearchBarDelegate{
         emptyLabel.isHidden = true
     }
 }
-
-    
-    
-    
-
-     
