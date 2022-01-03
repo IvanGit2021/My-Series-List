@@ -17,24 +17,26 @@ protocol ListView: NSObjectProtocol {
 
 class ListPresenter: NSObject {
     
-    var listView: ListView?
+    var listView: ListView
     let seriesRepository = SeriesRepository()
     var isChecked = true
     var series: [Series] = []
+    
+    init (listView: ListView) {
+        self.listView = listView
+    }
     
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { coreDataSeries in
             switch coreDataSeries {
             case .failure(let error):
-                self.listView?.listError(error)
+                self.listView.listError(error)
             case .success(let coreDataSeries):
                 self.series = coreDataSeries
                 if self.series.isEmpty {
-                    self.listView?.listEmpty()
+                    self.listView.listEmpty()
                 } else {
-                    self.listView?.startLoading()
-                    self.listView?.listSeries(self.series)
-                    self.listView?.finishLoading()
+                    self.listView.listSeries(self.series)
                 }
             }
         })
