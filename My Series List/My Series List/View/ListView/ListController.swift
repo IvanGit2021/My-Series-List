@@ -69,7 +69,7 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
-        cell.listTitle.text = series[indexPath.row].title
+        cell.listTitle.text = series[indexPath.row].name
         cell.listThumbnail.kf.setImage(with: url)
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
         cell.buttonBinding = { [self] in

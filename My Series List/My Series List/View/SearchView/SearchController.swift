@@ -74,7 +74,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! SearchCollectionViewCell
         
-        cell.searchTitle.text = series[indexPath.row].title
+        cell.searchTitle.text = series[indexPath.row].name
         if series[indexPath.row].posterPath != nil {
             let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
             cell.searchThumbnail.kf.setImage(with: url)
@@ -89,7 +89,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         cell.buttonBinding = { sender in
             self.searchPresenter.changeListCheckMark(cell.searchCheckMark, indexPath: indexPath)
         }
-        cell.searchTitle.text = series[indexPath.row].title
+        cell.searchTitle.text = series[indexPath.row].name
        
         return cell
     }

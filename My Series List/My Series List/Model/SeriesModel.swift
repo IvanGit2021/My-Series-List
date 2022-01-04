@@ -15,7 +15,7 @@ enum Api {
     
     class Series: Codable {
         let id: Double?
-        let title: String?
+        let name: String?
         let overView: String?
         let posterPath: String?
         let voteAverage: Double?
@@ -23,8 +23,8 @@ enum Api {
         
         enum CodingKeys: String, CodingKey {
             case id
-            case title
-            case overView
+            case name
+            case overView = "overview"
             case posterPath = "poster_path"
             case voteAverage = "vote_average"
         }

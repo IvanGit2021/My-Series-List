@@ -37,7 +37,7 @@ class SearchPresenter {
                 self.searchView?.startLoading()
                 DispatchQueue.main.async {
                     self.checkRepeated(seriesArray: self.series)
-                    self.seriesSorted = self.series.sorted(by: { $0.title! < $1.title! })
+                    self.seriesSorted = self.series.sorted(by: { $0.name! < $1.name! })
                     self.searchView?.listSeries(self.seriesSorted)
                 }
                 self.searchView?.finishLoading()
