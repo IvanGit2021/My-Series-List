@@ -14,7 +14,7 @@ enum Api {
     }
     
     class Series: Codable {
-        let id: Double?
+        let id: Int32?
         let name: String?
         let overView: String?
         let posterPath: String?
