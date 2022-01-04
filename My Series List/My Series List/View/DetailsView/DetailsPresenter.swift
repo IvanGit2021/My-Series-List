@@ -9,10 +9,7 @@ import Foundation
 
 protocol DetailsView: NSObjectProtocol {
     
-    func startLoading()
-    func finishLoading()
     func listSeries(_ series: [Series])
-    func listEmpty()
 }
 
 class DetailsPresenter {
@@ -21,16 +18,3 @@ class DetailsPresenter {
     let seriesRepository = SeriesRepository()
     var seriesID: Int32 = 0
 }
-    
-    /*func getSeries() {
-        seriesRepository.searchSeries(completionHandler: { series in
-            if series.count != 0 {
-                self.detailsView?.startLoading()
-                self.detailsView?.listSeries(series)
-                self.detailsView?.finishLoading()
-            } else {
-                self.detailsView?.listEmpty()
-            }
-        })
-    }*/
-

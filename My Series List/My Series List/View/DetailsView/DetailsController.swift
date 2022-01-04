@@ -13,28 +13,15 @@ class DetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         detailsPresenter.detailsView = self
     }
 }
 
 extension DetailsController: DetailsView {
     
-    func startLoading() {
-        print("Start Loading")
-    }
-    
-    func finishLoading() {
-        print("Finish Loading")
-    }
-    
     func listSeries(_ series: [Series]) {
         series.forEach { series in
             print(series)
         }
-    }
-    
-    func listEmpty() {
-        print("No data found")
     }
 }
