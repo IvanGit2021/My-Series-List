@@ -15,6 +15,8 @@ class SearchController: UIViewController {
     let searchPresenter = SearchPresenter()
     var series: [Api.Series] = []
     let searchController = UISearchController()
+    var indexPath = IndexPath()
+    let detailsPresenter = DetailsPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +97,12 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.indexPath = indexPath
         performSegue(withIdentifier: "goToDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        detailsPresenter.seriesID = series[indexPath.row].id!
     }
 }
 

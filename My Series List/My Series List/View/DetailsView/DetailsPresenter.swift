@@ -19,6 +19,7 @@ class DetailsPresenter {
     
     var detailsView: DetailsView?
     let seriesRepository = SeriesRepository()
+    var seriesID: Int32 = 0
 }
     
     /*func getSeries() {
