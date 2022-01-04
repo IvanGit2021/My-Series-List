@@ -102,7 +102,10 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        detailsPresenter.seriesID = series[indexPath.row].id!
+        if segue.identifier == "goToDetails",
+           let destination = segue.destination as? DetailsController {
+            destination.id = series[indexPath.row].id
+        }
     }
 }
 
