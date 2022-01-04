@@ -9,12 +9,22 @@ import Foundation
 
 protocol DetailsView: NSObjectProtocol {
     
-    func listSeries(_ series: [Series])
+    func listDetails(details: Details)
 }
 
 class DetailsPresenter {
     
     var detailsView: DetailsView?
     let seriesRepository = SeriesRepository()
-    var seriesID: Int32 = 0
+    
+    func getDetails(id: Int32) {
+        seriesRepository.searchDetails(id: id) { [self] results in
+            switch results {
+            case .failure(let error):
+                break
+            case .success(let details):
+                detailsView?.listDetails(details: details)
+            }
+        }
+    }
 }

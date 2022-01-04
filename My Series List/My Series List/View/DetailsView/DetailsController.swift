@@ -10,18 +10,17 @@ import UIKit
 class DetailsController: UIViewController {
 
     let detailsPresenter = DetailsPresenter()
+    var id: Int32?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailsPresenter.detailsView = self
+        detailsPresenter.getDetails(id: id!)
     }
 }
 
 extension DetailsController: DetailsView {
     
-    func listSeries(_ series: [Series]) {
-        series.forEach { series in
-            print(series)
-        }
+    func listDetails(details: Details) {
     }
 }
