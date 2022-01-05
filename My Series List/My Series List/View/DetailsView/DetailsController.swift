@@ -17,6 +17,10 @@ class DetailsController: UIViewController {
         detailsPresenter.detailsView = self
         detailsPresenter.getDetails(id: id!)
     }
+    @IBAction func goToWebsite(_ sender: UIButton) {
+        let homePage = details?.homePage == "" ? "https://www.netflix.com" : details?.homePage
+        UIApplication.shared.open(URL(string: (homePage)!)! as URL)
+    }
 }
 
 extension DetailsController: DetailsView {
