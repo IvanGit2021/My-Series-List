@@ -9,6 +9,15 @@ import UIKit
 
 class DetailsController: UIViewController {
 
+    @IBOutlet weak var detailsBackgroundImage: UIImageView!
+    @IBOutlet weak var detailsFrontImage: UIImageView!
+    @IBOutlet weak var detailsTitle: UILabel!
+    @IBOutlet weak var detailsGenre: UILabel!
+    @IBOutlet weak var detailsSeasons: UILabel!
+    @IBOutlet weak var detailsLanguage: UILabel!
+    @IBOutlet weak var detailsOverview: UILabel!
+    @IBOutlet weak var detailsWebSite: UIButton!
+    
     let detailsPresenter = DetailsPresenter()
     var id: Int32?
     
