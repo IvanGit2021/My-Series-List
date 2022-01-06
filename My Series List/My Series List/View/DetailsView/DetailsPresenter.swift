@@ -10,6 +10,8 @@ import Foundation
 protocol DetailsView: NSObjectProtocol {
     
     func listDetails(details: Details)
+    func listDetailsCoreData(details: Series)
+    func showEmpty()
 }
 
 class DetailsPresenter {
