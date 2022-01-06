@@ -18,7 +18,7 @@ class DetailsPresenter {
     let seriesRepository = SeriesRepository()
     
     func getDetails(id: Int32) {
-        seriesRepository.searchDetails(id: id) { [self] results in
+        seriesRepository.searchSeriesDetails(id: id) { [self] results in
             switch results {
             case .failure(let error):
                 break
