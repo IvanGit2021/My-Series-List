@@ -29,15 +29,7 @@ class SearchController: UIViewController {
 }
 
 extension SearchController: SearchView {
-    
-    func startLoading() {
-        print("Start Loading")
-    }
-    
-    func finishLoading() {
-        print("Finish Loading")
-    }
-    
+ 
     func listSeries(_ series: [Api.Series]) {
         DispatchQueue.main.async {
             self.collectionView.dataSource = self
@@ -52,9 +44,6 @@ extension SearchController: SearchView {
     func listError(_ error: Error) {
         DispatchQueue.main.async { [self] in
             emptyLabel.text = "Couldn't retreave your data, please try again later.\nError: \(error.localizedDescription)"
-            emptyLabel.textAlignment = .center
-            view.addSubview(emptyLabel)
-            navigationItem.searchController?.isActive = true
             emptyLabel.isHidden = false
         }
     }

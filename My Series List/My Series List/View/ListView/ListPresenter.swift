@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 protocol ListView: NSObjectProtocol {
-    
-    func startLoading()
-    func finishLoading()
+  
     func listSeries(_ series: [Series])
     func listError(_ error: Error)
     func listEmpty()
@@ -34,9 +32,7 @@ class ListPresenter: NSObject {
                 if self.series.isEmpty {
                     self.listView?.listEmpty()
                 }
-                self.listView?.startLoading()
                 self.listView?.listSeries(self.series)
-                self.listView?.finishLoading()
             }
         })
     }

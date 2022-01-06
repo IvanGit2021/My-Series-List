@@ -8,9 +8,7 @@
 import UIKit
 
 protocol SearchView: NSObjectProtocol {
-    
-    func startLoading()
-    func finishLoading()
+ 
     func listSeries(_ series: [Api.Series])
     func listError(_ error: Error)
     func listEmpty()
@@ -34,13 +32,11 @@ class SearchPresenter {
                 if self.series.isEmpty {
                     self.searchView?.listEmpty()
                 }
-                self.searchView?.startLoading()
                 DispatchQueue.main.async {
                     self.checkRepeated(seriesArray: self.series)
                     self.seriesSorted = self.series.sorted(by: { $0.name! < $1.name! })
                     self.searchView?.listSeries(self.seriesSorted)
                 }
-                self.searchView?.finishLoading()
             }
          })
     }
