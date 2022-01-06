@@ -98,11 +98,11 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.indexPath = indexPath
-        performSegue(withIdentifier: "goToDetails", sender: self)
+        performSegue(withIdentifier: "goToDetailsFromSearch", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetails",
+        if segue.identifier == "goToDetailsFromSearch",
            let destination = segue.destination as? DetailsController {
             destination.id = series[indexPath.row].id
         }
