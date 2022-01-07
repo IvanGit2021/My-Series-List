@@ -9,21 +9,22 @@ import Foundation
 
 enum Api {
     
-    struct Results: Codable {
+    class Results: Codable {
         let results: [Series]
     }
     
-    struct Series: Codable {
-        let id: Int?
-        let name: String?
-        let overview: String?
+    class Series: Codable {
+        let id: Double?
+        let title: String?
+        let overView: String?
         let posterPath: String?
         let voteAverage: Double?
+        var isSaved: Bool = false
         
         enum CodingKeys: String, CodingKey {
             case id
-            case name
-            case overview
+            case title
+            case overView
             case posterPath = "poster_path"
             case voteAverage = "vote_average"
         }

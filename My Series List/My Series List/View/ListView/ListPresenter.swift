@@ -28,12 +28,12 @@ class ListPresenter: NSObject {
     }
     
     func getSeries() {
-        seriesRepository.getSeries(completionHandler: { coreDataSeries in
-            switch coreDataSeries {
+        seriesRepository.getSeries(completionHandler: { results in
+            switch results {
             case .failure(let error):
                 self.listView.listError(error)
-            case .success(let coreDataSeries):
-                self.series = coreDataSeries
+            case .success(let seriesCoreData):
+                self.series = seriesCoreData
                 if self.series.isEmpty {
                     self.listView.listEmpty()
                 } else {
@@ -56,5 +56,12 @@ class ListPresenter: NSObject {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
             isChecked = true
         }
+    }
+    
+    func reloadCollectionView(series: [Series], collectionView: UICollectionView) {
+        if series.count == 0 {
+            listView.listEmpty()
+        }
+        collectionView.reloadData()
     }
 }
