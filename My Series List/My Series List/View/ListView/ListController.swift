@@ -13,25 +13,24 @@ class ListController: UIViewController {
     
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    let listPresenter = ListPresenter()
+    var listPresenter: ListPresenter?
     var series: [Series] = []
     let seriesLocalDataSource = SeriesLocalDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listPresenter.listView = self
+        listPresenter = ListPresenter(listView: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        listPresenter.getSeries()
-        listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
+        listPresenter!.getSeries()
+        listPresenter!.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }
 
 extension ListController: ListView {
     
-
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -76,11 +75,11 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func listButtonPressed(at indexPath: IndexPath) {
-        listPresenter.deleteSeries(series: series[indexPath.row])
+        listPresenter!.deleteSeries(series: series[indexPath.row])
         series.remove(at: indexPath.row)
         if series.count == 0 {
             listEmpty()
         }
-        listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
+        listPresenter!.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }

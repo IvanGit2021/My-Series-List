@@ -60,7 +60,7 @@ class ListPresenter: NSObject {
     
     func reloadCollectionView(series: [Series], collectionView: UICollectionView) {
         if series.count == 0 {
-            listView?.listEmpty()
+            listView.listEmpty()
         }
         collectionView.reloadData()
     }

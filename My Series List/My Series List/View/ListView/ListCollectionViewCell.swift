@@ -16,7 +16,6 @@ class ListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var listThumbnail: UIImageView!
     @IBOutlet weak var listTitle: UILabel!
     @IBOutlet weak var listCheckMark: UIButton!
-    let listPresenter = ListPresenter()
     var listCell: ListCell?
     var indexPath: IndexPath!
 
