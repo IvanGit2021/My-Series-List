@@ -25,22 +25,24 @@ class DetailsPresenter {
             case .success(let details):
                 detailsView?.listDetails(details: details)
             case .failure(_):
-                seriesRepository.getSeries { results in
-                    switch results {
-                    case (.failure(_)):
-                        break
-                    case (.success(let seriesCoreData)):
+                DispatchQueue.main.async {
+                    seriesRepository.getSeries { results in
+                        switch results {
+                        case (.failure(_)):
+                            break
+                        case (.success(let seriesCoreData)):
                         var count = 0
-                        for series in seriesCoreData {
-                            if series.id == id {
-                                let details = series
-                                detailsView?.listDetailsCoreData(details: details)
-                                count += 1
-                                break
+                            for series in seriesCoreData {
+                                if series.id == id {
+                                    let details = series
+                                    detailsView?.listDetailsCoreData(details: details)
+                                    count += 1
+                                    break
+                                }
                             }
-                        }
-                        if count == 0 {
-                            detailsView?.showEmpty()
+                            if count == 0 {
+                                detailsView?.showEmpty()
+                            }
                         }
                     }
                 }
