@@ -11,7 +11,7 @@ import UIKit
 
 class SeriesLocalDataSource {
    
-    var coreDataSeries = [Series]()
+    var series = [Series]()
     
     func insertSeries(series: Api.Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         let newSeries = Series(context: context)
@@ -34,8 +34,8 @@ class SeriesLocalDataSource {
     func getSeries(completionHandler: @escaping (Result<[Series], Error>) -> Void) {
         let request: NSFetchRequest<Series> = Series.fetchRequest()
         do {
-            coreDataSeries = try context.fetch(request)
-            completionHandler(.success(coreDataSeries))
+            series = try context.fetch(request)
+            completionHandler(.success(series))
         } catch {
             completionHandler(.failure(error))
         }

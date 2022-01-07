@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import Kingfisher
 
 class ListController: UIViewController {
@@ -30,14 +31,7 @@ class ListController: UIViewController {
 
 extension ListController: ListView {
     
-    func startLoading() {
-        print("Start Loading")
-    }
-    
-    func finishLoading() {
-        print("Finish Loading")
-    }
-    
+
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -58,9 +52,8 @@ extension ListController: ListView {
     }
 }
 
-extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
- 
-    
+extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, ListCell {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return series.count
     }
@@ -72,15 +65,22 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.listTitle.text = series[indexPath.row].title
         cell.listThumbnail.kf.setImage(with: url)
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-        cell.buttonBinding = { [self] in
-            listPresenter.deleteSeries(series: series[indexPath.row])
-            series.remove(at: indexPath.row)
-            listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
-        }
+        cell.listCell = self
+        cell.indexPath = indexPath
+       
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(series[indexPath.row])
+    }
+    
+    func listButtonPressed(at indexPath: IndexPath) {
+        listPresenter.deleteSeries(series: series[indexPath.row])
+        series.remove(at: indexPath.row)
+        if series.count == 0 {
+            listEmpty()
+        }
+        listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }
