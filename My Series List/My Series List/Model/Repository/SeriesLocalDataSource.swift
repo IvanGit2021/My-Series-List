@@ -20,7 +20,6 @@ class SeriesLocalDataSource {
         newSeries.name = series.name
         newSeries.overView = series.overView
         newSeries.posterPath = series.posterPath
-        newSeries.voteAverage = series.voteAverage!
         newSeries.isSaved = series.isSaved 
         
         do {

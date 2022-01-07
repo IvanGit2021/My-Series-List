@@ -18,7 +18,6 @@ enum Api {
         let name: String?
         let overView: String?
         let posterPath: String?
-        let voteAverage: Double?
         var isSaved: Bool = false
         
         enum CodingKeys: String, CodingKey {
@@ -26,7 +25,6 @@ enum Api {
             case name
             case overView = "overview"
             case posterPath = "poster_path"
-            case voteAverage = "vote_average"
         }
     }
 }
