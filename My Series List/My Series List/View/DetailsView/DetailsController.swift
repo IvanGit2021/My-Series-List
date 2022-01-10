@@ -26,6 +26,7 @@ class DetailsController: UIViewController {
     
     let detailsPresenter = DetailsPresenter()
     var id: Int32?
+    var isSaved: Bool?
     var details: Details?
     
     override func viewDidLoad() {
@@ -105,5 +106,17 @@ extension DetailsController: DetailsView {
             detailsFavourites.isHidden = true
             detailsSaveDelete.isHidden = true
         }
+    }
+    
+    func setSavedToFalse() {
+        isSaved = false
+        detailsPresenter.getDetails(id: id!)
+        detailsFavourites.isHidden = true
+    }
+    
+    func setSavedToTrue() {
+        isSaved = true
+        detailsPresenter.getDetails(id: id!)
+        detailsFavourites.isHidden = false
     }
 }

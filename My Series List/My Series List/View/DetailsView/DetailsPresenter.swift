@@ -12,6 +12,8 @@ protocol DetailsView: NSObjectProtocol {
     func listDetails(details: Details)
     func listDetailsCoreData(details: Series)
     func showEmpty()
+    func setSavedToTrue()
+    func setSavedToFalse()
 }
 
 class DetailsPresenter {
