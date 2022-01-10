@@ -21,6 +21,8 @@ class DetailsController: UIViewController {
     @IBOutlet weak var detailsOverview: UILabel!
     @IBOutlet weak var detailsWebSite: UIButton!
     @IBOutlet weak var emptyDetails: UILabel!
+    @IBOutlet weak var detailsSaveDelete: UIButton!
+    @IBOutlet weak var detailsFavourites: UIImageView!
     
     let detailsPresenter = DetailsPresenter()
     var id: Int32?
@@ -30,6 +32,10 @@ class DetailsController: UIViewController {
         super.viewDidLoad()
         detailsPresenter.detailsView = self
         detailsPresenter.getDetails(id: id!)
+    }
+    
+    @IBAction func saveDelete(_ sender: UIButton) {
+        detailsPresenter.insertRemove(isSaved: isSaved!)
     }
     
     @IBAction func goToWebsite(_ sender: UIButton) {
@@ -46,6 +52,13 @@ extension DetailsController: DetailsView {
             emptyDetails.isHidden = true
             let imageUrl = URL(string: details.backdropPath == nil ? "" : "https://image.tmdb.org/t/p/w500" + details.backdropPath!)
             let imageUrl2 = URL(string: details.posterPath == nil ? "" : "https://image.tmdb.org/t/p/w500" + details.posterPath!)
+            if isSaved!{
+                detailsSaveDelete.titleLabel?.text = "Delete"
+            } else {
+                detailsSaveDelete.titleLabel?.text = "Save"
+                detailsSaveDelete.titleLabel?.textAlignment = .center
+                detailsFavourites.isHidden = true
+            }
             var allGenres = ""
             for name in details.genres! {
                 allGenres += name.name! + " "
@@ -62,6 +75,7 @@ extension DetailsController: DetailsView {
     
     func listDetailsCoreData(details: Series) {
         DispatchQueue.main.async { [self] in
+            detailsSaveDelete.titleLabel?.text = "Delete"
             emptyDetails.isHidden = true
             let imageUrl = URL(string: details.posterPath == nil ? "" : "https://image.tmdb.org/t/p/w500" + details.posterPath!)
             detailsFrontImage.kf.setImage(with: imageUrl)
@@ -78,6 +92,7 @@ extension DetailsController: DetailsView {
     
     func showEmpty() {
         DispatchQueue.main.async { [self] in
+            detailsFrontImage.isHidden = true
             emptyDetails.isHidden = false
             detailsTitle.isHidden = true
             detailsGenre.isHidden = true
@@ -87,6 +102,8 @@ extension DetailsController: DetailsView {
             detailsLanguage.isHidden = true
             detailsOverview.isHidden = true
             detailsWebSite.isHidden = true
+            detailsFavourites.isHidden = true
+            detailsSaveDelete.isHidden = true
         }
     }
 }
