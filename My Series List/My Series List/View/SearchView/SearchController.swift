@@ -21,10 +21,14 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchPresenter.searchView = self
-        searchPresenter.searchSeries(search: "")
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         emptyLabel.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        searchPresenter.searchSeries(search: "")
     }
 }
 
