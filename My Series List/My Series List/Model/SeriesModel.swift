@@ -14,10 +14,10 @@ enum Api {
     }
     
     class Series: Codable {
-        let id: Int32?
-        let name: String?
-        let overView: String?
-        let posterPath: String?
+        var id: Int32?
+        var name: String?
+        var overView: String?
+        var posterPath: String?
         var isSaved: Bool = false
         
         enum CodingKeys: String, CodingKey {
