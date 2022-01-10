@@ -44,8 +44,8 @@ class SearchPresenter {
     func changeListCheckMark(_ checkMark: UIButton, indexPath: IndexPath) {
         if seriesSorted[indexPath.row].isSaved == false {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-            seriesRepository.insertSeries(series: seriesSorted[indexPath.row])
             seriesSorted[indexPath.row].isSaved = true
+            seriesRepository.insertSeries(series: seriesSorted[indexPath.row])
         } else {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
             seriesSorted[indexPath.row].isSaved = false
