@@ -82,6 +82,7 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         if segue.identifier == "goToDetailsFromList",
            let destination = segue.destination as? DetailsController {
             destination.id = series[indexPath.row].id
+            destination.isSaved = series[indexPath.row].isSaved
         }
     }
 }

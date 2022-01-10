@@ -94,6 +94,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         if segue.identifier == "goToDetailsFromSearch",
            let destination = segue.destination as? DetailsController {
             destination.id = series[indexPath.row].id
+            destination.isSaved = series[indexPath.row].isSaved
         }
     }
 }
