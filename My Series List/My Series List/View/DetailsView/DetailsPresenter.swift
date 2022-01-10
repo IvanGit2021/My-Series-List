@@ -20,11 +20,44 @@ class DetailsPresenter {
     
     var detailsView: DetailsView?
     let seriesRepository = SeriesRepository()
+    var id: Int32?
+    var details: Details?
+   
+    func insertRemove(isSaved: Bool) {
+        if isSaved {
+            seriesRepository.getSeries { results in
+                switch results {
+                case .failure(_):
+                    break
+                case .success(let series):
+                    for series in series {
+                        if series.id == self.id {
+                            self.seriesRepository.deleteSeries(series: series) { results in
+                            }
+                            break
+                        }
+                    }
+                    self.detailsView!.setSavedToFalse()
+                }
+            }
+        } else {
+            let series = Api.Series()
+            series.id = details!.id
+            series.name = details!.name
+            series.overView = details!.overView
+            series.posterPath = details!.posterPath
+            series.isSaved = true
+            seriesRepository.insertSeries(series: series)
+            detailsView?.setSavedToTrue()
+        }
+    }
     
     func getDetails(id: Int32) {
+        self.id = id
         seriesRepository.searchSeriesDetails(id: id) { [self] results in
             switch results {
             case .success(let details):
+                self.details = details
                 detailsView?.listDetails(details: details)
             case .failure(_):
                 DispatchQueue.main.async {
