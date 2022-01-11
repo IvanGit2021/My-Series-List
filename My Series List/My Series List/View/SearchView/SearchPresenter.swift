@@ -24,15 +24,15 @@ class SearchPresenter {
     func searchSeries(search: String) {
         let replacedText = search.replacingOccurrences(of: " ", with: "+")
         seriesRepository.searchSeries(search: replacedText, completionHandler: { results in
-            switch results {
-            case .failure(let error):
-                self.searchView?.listError(error)
-            case .success(let seriesApi):
-                self.series = seriesApi.results
-                if self.series.isEmpty {
-                    self.searchView?.listEmpty()
-                }
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch results {
+                case .failure(let error):
+                    self.searchView?.listError(error)
+                case .success(let seriesApi):
+                    self.series = seriesApi.results
+                    if self.series.isEmpty {
+                        self.searchView?.listEmpty()
+                    }
                     self.checkRepeated(seriesArray: self.series)
                     self.seriesSorted = self.series.sorted(by: { $0.name! < $1.name! })
                     self.searchView?.listSeries(self.seriesSorted)
