@@ -48,7 +48,9 @@ extension SearchController: SearchView {
     
     func listError(_ error: Error) {
         DispatchQueue.main.async { [self] in
-            emptyLabel.text = "Couldn't retreave your data, please try again later.\nError: \(error.localizedDescription)"
+            series = []
+            collectionView.reloadData()
+            emptyLabel.text = "Couldn't retreave your data, please try again later.\n \(error.localizedDescription)"
             emptyLabel.isHidden = false
         }
     }
