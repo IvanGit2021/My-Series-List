@@ -28,7 +28,8 @@ class SearchController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        searchPresenter.searchSeries(search: "")
+        guard let text = navigationItem.searchController?.searchBar.text else { return }
+        text == "" ? searchPresenter.searchSeries(search: "") : searchPresenter.searchSeries(search: text)
     }
 }
 
