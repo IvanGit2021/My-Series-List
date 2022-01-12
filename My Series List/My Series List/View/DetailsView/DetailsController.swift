@@ -54,10 +54,9 @@ extension DetailsController: DetailsView {
             let imageUrl = URL(string: details.backdropPath == nil ? "" : "https://image.tmdb.org/t/p/w500" + details.backdropPath!)
             let imageUrl2 = URL(string: details.posterPath == nil ? "" : "https://image.tmdb.org/t/p/w500" + details.posterPath!)
             if isSaved!{
-                detailsSaveDelete.titleLabel?.text = "Delete"
+                detailsSaveDelete.setTitle("Delete", for: .normal)
             } else {
-                detailsSaveDelete.titleLabel?.text = "Save"
-                detailsSaveDelete.titleLabel?.textAlignment = .center
+                detailsSaveDelete.setTitle("Save", for: .normal)
                 detailsFavourites.isHidden = true
             }
             var allGenres = ""
@@ -109,13 +108,14 @@ extension DetailsController: DetailsView {
     }
 
     func updateFavourites() {
-        detailsPresenter.getDetails(id: id!)
         if isSaved! {
-            isSaved = false
             detailsFavourites.isHidden = true
+            detailsSaveDelete.setTitle("Save", for: .normal)
+            isSaved = false
         } else {
-           isSaved = true
             detailsFavourites.isHidden = false
+            detailsSaveDelete.setTitle("Delete", for: .normal)
+            isSaved = true
         }
     }
 }
