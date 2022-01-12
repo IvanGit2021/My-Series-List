@@ -62,10 +62,8 @@ class DetailsPresenter {
                 DispatchQueue.main.async {
                     seriesRepository.getSeries { results in
                         switch results {
-                        case (.failure(_)):
-                            break
                         case (.success(let seriesCoreData)):
-                        var count = 0
+                            var count = 0
                             for series in seriesCoreData {
                                 if series.id == id {
                                     let details = series
@@ -77,6 +75,8 @@ class DetailsPresenter {
                             if count == 0 {
                                 detailsView?.showEmpty()
                             }
+                        case (.failure(_)):
+                            break
                         }
                     }
                 }
