@@ -40,13 +40,7 @@ class DetailsPresenter {
                 }
             }
         } else {
-            let series = Api.Series()
-            series.id = details!.id
-            series.name = details!.name
-            series.overView = details!.overView
-            series.posterPath = details!.posterPath
-            series.isSaved = true
-            seriesRepository.insertSeries(series: series)
+            seriesRepository.insertSeries(series: details!)
             detailsView?.updateFavourites()
         }
     }
