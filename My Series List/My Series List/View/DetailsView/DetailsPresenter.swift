@@ -12,8 +12,7 @@ protocol DetailsView: NSObjectProtocol {
     func listDetails(details: Api.Series)
     func listDetailsCoreData(details: Series)
     func showEmpty()
-    func setSavedToTrue()
-    func setSavedToFalse()
+    func updateFavourites()
 }
 
 class DetailsPresenter {
@@ -37,7 +36,7 @@ class DetailsPresenter {
                             break
                         }
                     }
-                    self.detailsView!.setSavedToFalse()
+                    self.detailsView!.updateFavourites()
                 }
             }
         } else {
@@ -48,7 +47,7 @@ class DetailsPresenter {
             series.posterPath = details!.posterPath
             series.isSaved = true
             seriesRepository.insertSeries(series: series)
-            detailsView?.setSavedToTrue()
+            detailsView?.updateFavourites()
         }
     }
     

@@ -107,16 +107,15 @@ extension DetailsController: DetailsView {
             detailsSaveDelete.isHidden = true
         }
     }
-    
-    func setSavedToFalse() {
-        isSaved = false
+
+    func updateFavourites() {
         detailsPresenter.getDetails(id: id!)
-        detailsFavourites.isHidden = true
-    }
-    
-    func setSavedToTrue() {
-        isSaved = true
-        detailsPresenter.getDetails(id: id!)
-        detailsFavourites.isHidden = false
+        if isSaved! {
+            isSaved = false
+            detailsFavourites.isHidden = true
+        } else {
+           isSaved = true
+            detailsFavourites.isHidden = false
+        }
     }
 }
