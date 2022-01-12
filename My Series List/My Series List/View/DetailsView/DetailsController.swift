@@ -27,7 +27,7 @@ class DetailsController: UIViewController {
     let detailsPresenter = DetailsPresenter()
     var id: Int32?
     var isSaved: Bool?
-    var details: Details?
+    var details: Api.Series?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +46,8 @@ class DetailsController: UIViewController {
 }
 
 extension DetailsController: DetailsView {
-    
-    func listDetails(details: Details) {
+   
+    func listDetails(details: Api.Series) {
         self.details = details
         DispatchQueue.main.async { [self] in
             emptyDetails.isHidden = true

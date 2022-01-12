@@ -9,7 +9,7 @@ import Foundation
 
 protocol DetailsView: NSObjectProtocol {
     
-    func listDetails(details: Details)
+    func listDetails(details: Api.Series)
     func listDetailsCoreData(details: Series)
     func showEmpty()
     func setSavedToTrue()
@@ -21,7 +21,7 @@ class DetailsPresenter {
     var detailsView: DetailsView?
     let seriesRepository = SeriesRepository()
     var id: Int32?
-    var details: Details?
+    var details: Api.Series?
    
     func insertRemove(isSaved: Bool) {
         if isSaved {
