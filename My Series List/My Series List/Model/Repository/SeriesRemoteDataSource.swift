@@ -31,7 +31,8 @@ class SeriesRemoteDataSource {
     }
     
     func getDetails(id: Int32, completionHandler: @escaping (Result<Details, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: URL (string: "\(detailsApiUrl)\(id)?\(detailsApiParameters)" )! , completionHandler: { data, response, error in
+        let url = detailsApiUrl + id.description + "?" + detailsApiParameters
+        let task = URLSession.shared.dataTask(with: URL (string: url)! , completionHandler: { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data {
