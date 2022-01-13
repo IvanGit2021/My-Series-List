@@ -24,22 +24,18 @@ class DetailsPresenter {
    
     func insertRemove(isSaved: Bool) {
         if isSaved {
-            seriesRepository.getSeries { results in
+            seriesRepository.getSeriesById(id: id!) { results in
                 switch results {
+                case .success(let series):
+                    self.seriesRepository.deleteSeries(series: series[0]) { results in
+                    }
                 case .failure(_):
                     break
-                case .success(let series):
-                    for series in series {
-                        if series.id == self.id {
-                            self.seriesRepository.deleteSeries(series: series) { results in
-                            }
-                            break
-                        }
-                    }
-                    self.detailsView!.updateFavourites()
                 }
             }
+            self.detailsView!.updateFavourites()
         } else {
+            details?.isSaved = true
             seriesRepository.insertSeries(series: details!)
             detailsView?.updateFavourites()
         }
@@ -54,22 +50,15 @@ class DetailsPresenter {
                 detailsView?.listDetails(details: details)
             case .failure(_):
                 DispatchQueue.main.async {
-                    seriesRepository.getSeries { results in
+                    seriesRepository.getSeriesById(id: id) { results in
                         switch results {
-                        case (.success(let seriesCoreData)):
-                            var count = 0
-                            for series in seriesCoreData {
-                                if series.id == id {
-                                    let details = series
-                                    detailsView?.listDetailsCoreData(details: details)
-                                    count += 1
-                                    break
-                                }
-                            }
-                            if count == 0 {
+                        case .success(let series):
+                            if !series.isEmpty {
+                                detailsView?.listDetailsCoreData(details: series[0])
+                            } else {
                                 detailsView?.showEmpty()
                             }
-                        case (.failure(_)):
+                        case .failure(_):
                             break
                         }
                     }

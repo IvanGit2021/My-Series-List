@@ -30,6 +30,12 @@ class SeriesRepository {
         }
     }
     
+    func getSeriesById(id: Int32, completionHandler: @escaping (Result<[Series], Error>) -> Void){
+        seriesLocalDataSource.getSeriesById(id: id) { results in
+            completionHandler(results)
+        }
+    }
+    
     func insertSeries(series: Api.Series) {
         seriesLocalDataSource.insertSeries(series: series) { results in
         }

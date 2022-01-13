@@ -39,6 +39,17 @@ class SeriesLocalDataSource {
             completionHandler(.failure(error))
         }
     }
+    
+    func getSeriesById(id: Int32, completionHandler: @escaping (Result<[Series], Error>) -> Void) {
+        let request: NSFetchRequest<Series> = Series.fetchRequest()
+        request.predicate = NSPredicate(format: "id == '\(id)'")
+        do {
+            let seriesById = try context.fetch(request)
+            completionHandler(.success(seriesById))
+        } catch {
+            completionHandler(.failure(error))
+        }
+    }
    
     func deleteSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         context.delete(series)
