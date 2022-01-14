@@ -12,25 +12,25 @@ class ListController: UIViewController {
     
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    let listPresenter = ListPresenter()
+    var listPresenter: ListPresenter?
     var series: [Series] = []
     let seriesLocalDataSource = SeriesLocalDataSource()
     var indexPath = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listPresenter.listView = self
+        listPresenter = ListPresenter(listView: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        listPresenter.getSeries()
-        listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
+        listPresenter!.getSeries()
+        listPresenter!.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }
 
 extension ListController: ListView {
-
+    
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -51,9 +51,8 @@ extension ListController: ListView {
     }
 }
 
-extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
- 
-    
+extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, ListCell {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return series.count
     }
@@ -65,11 +64,9 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.listTitle.text = series[indexPath.row].name
         cell.listThumbnail.kf.setImage(with: url)
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-        cell.buttonBinding = { [self] in
-            listPresenter.deleteSeries(series: series[indexPath.row])
-            series.remove(at: indexPath.row)
-            listPresenter.reloadCollectionView(series: series, collectionView: collectionView)
-        }
+        cell.listCell = self
+        cell.indexPath = indexPath
+       
         return cell
     }
     
@@ -84,5 +81,14 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
             destination.id = series[indexPath.row].id
             destination.isSaved = series[indexPath.row].isSaved
         }
+    }
+    
+    func listButtonPressed(at indexPath: IndexPath) {
+        listPresenter!.deleteSeries(series: series[indexPath.row])
+        series.remove(at: indexPath.row)
+        if series.count == 0 {
+            listEmpty()
+        }
+        listPresenter!.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }

@@ -46,18 +46,18 @@ extension SearchController: SearchView {
         }
     }
     
+    func listEmpty() {
+        DispatchQueue.main.async { [self] in
+            emptyLabel.text = "Please search with another title."
+            emptyLabel.isHidden = false
+        }
+    }
+    
     func listError(_ error: Error) {
         DispatchQueue.main.async { [self] in
             series = []
             collectionView.reloadData()
             emptyLabel.text = "Couldn't retreave your data, please try again later.\n \(error.localizedDescription)"
-            emptyLabel.isHidden = false
-        }
-    }
-    
-    func listEmpty() {
-        DispatchQueue.main.async { [self] in
-            emptyLabel.text = "Please search with another title."
             emptyLabel.isHidden = false
         }
     }
@@ -120,9 +120,3 @@ extension SearchController: UISearchBarDelegate{
         emptyLabel.isHidden = true
     }
 }
-
-    
-    
-    
-
-     

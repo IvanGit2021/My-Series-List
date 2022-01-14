@@ -56,8 +56,7 @@ class SearchPresenter {
                 case .success(let seriesCoreData):
                     for series in seriesCoreData {
                         if series.id == self.seriesSorted[indexPath.row].id {
-                            self.seriesRepository.deleteSeries(series: series) { results in
-                            }
+                            self.seriesRepository.deleteSeries(series: series) 
                         }
                     }
                 }
@@ -71,10 +70,11 @@ class SearchPresenter {
             case .failure(_):
                 break
             case .success(let seriesCoreData):
-                for seriesA in seriesCoreData {
-                    for seriesB in seriesArray {
-                        if seriesA.id == seriesB.id! {
-                            seriesB.isSaved = true
+                for series in seriesArray {
+                    for seriesCD in seriesCoreData {
+                        if series.id == seriesCD.id {
+                            series.isSaved = true
+                            break
                         }
                     }
                 }

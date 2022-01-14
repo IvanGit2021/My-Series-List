@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ListView: NSObjectProtocol {
-  
+    
     func listSeries(_ series: [Series])
     func listError(_ error: Error)
     func listEmpty()
@@ -17,22 +17,27 @@ protocol ListView: NSObjectProtocol {
 
 class ListPresenter: NSObject {
     
-    var listView: ListView?
+    var listView: ListView
     let seriesRepository = SeriesRepository()
     var isChecked = true
     var series: [Series] = []
+    
+    init (listView: ListView) {
+        self.listView = listView
+    }
     
     func getSeries() {
         seriesRepository.getSeries(completionHandler: { results in
             switch results {
             case .failure(let error):
-                self.listView?.listError(error)
+                self.listView.listError(error)
             case .success(let seriesCoreData):
                 self.series = seriesCoreData
                 if self.series.isEmpty {
-                    self.listView?.listEmpty()
+                    self.listView.listEmpty()
+                } else {
+                    self.listView.listSeries(self.series)
                 }
-                self.listView?.listSeries(self.series)
             }
         })
     }
@@ -46,7 +51,6 @@ class ListPresenter: NSObject {
         if isChecked {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
             isChecked = false
-            
         } else {
             checkMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
             isChecked = true
@@ -55,11 +59,8 @@ class ListPresenter: NSObject {
     
     func reloadCollectionView(series: [Series], collectionView: UICollectionView) {
         if series.count == 0 {
-            listView?.listEmpty()
+            listView.listEmpty()
         }
         collectionView.reloadData()
     }
 }
-
-
-
