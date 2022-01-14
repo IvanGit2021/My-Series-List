@@ -22,23 +22,23 @@ class DetailsPresenter {
     var id: Int32?
     var details: Api.Series?
    
-    func insertRemove(isSaved: Bool) {
-        if isSaved {
-            seriesRepository.getSeriesById(id: id!) { results in
-                switch results {
-                case .success(let series):
-                    self.seriesRepository.deleteSeries(series: series[0]) { results in
-                    }
-                case .failure(_):
-                    break
+    func insertSeries() {
+        details?.isSaved = true
+        seriesRepository.insertSeries(series: details!)
+        detailsView?.updateFavourites()
+    }
+    
+    func deleteSeries() {
+        seriesRepository.getSeriesById(id: id!) { results in
+            switch results {
+            case .success(let series):
+                self.seriesRepository.deleteSeries(series: series[0]) { results in
                 }
+            case .failure(_):
+                break
             }
-            self.detailsView!.updateFavourites()
-        } else {
-            details?.isSaved = true
-            seriesRepository.insertSeries(series: details!)
-            detailsView?.updateFavourites()
         }
+        self.detailsView!.updateFavourites()
     }
     
     func getDetails(id: Int32) {

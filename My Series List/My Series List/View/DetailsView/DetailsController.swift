@@ -36,7 +36,7 @@ class DetailsController: UIViewController {
     }
     
     @IBAction func saveDelete(_ sender: UIButton) {
-        detailsPresenter.insertRemove(isSaved: isSaved!)
+        isSaved! ? detailsPresenter.deleteSeries() : detailsPresenter.insertSeries()
     }
     
     @IBAction func goToWebsite(_ sender: UIButton) {
