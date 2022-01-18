@@ -15,27 +15,26 @@ class SearchController: UIViewController {
     let searchPresenter = SearchPresenter()
     var series: [Api.Series] = []
     let searchController = UISearchController()
+    var indexPath = IndexPath()
+    let detailsPresenter = DetailsPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchPresenter.searchView = self
-        searchPresenter.searchSeries(search: "")
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         emptyLabel.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        guard let text = navigationItem.searchController?.searchBar.text else { return }
+        text == "" ? searchPresenter.searchSeries(search: "") : searchPresenter.searchSeries(search: text)
+    }
 }
 
 extension SearchController: SearchView {
-    
-    func startLoading() {
-        print("Start Loading")
-    }
-    
-    func finishLoading() {
-        print("Finish Loading")
-    }
-    
+ 
     func listSeries(_ series: [Api.Series]) {
         DispatchQueue.main.async {
             self.collectionView.dataSource = self
@@ -56,10 +55,9 @@ extension SearchController: SearchView {
     
     func listError(_ error: Error) {
         DispatchQueue.main.async { [self] in
-            emptyLabel.text = "Couldn't retreave your data, please try again later.\nError: \(error.localizedDescription)"
-            emptyLabel.textAlignment = .center
-            view.addSubview(emptyLabel)
-            navigationItem.searchController?.isActive = true
+            series = []
+            collectionView.reloadData()
+            emptyLabel.text = "Couldn't retreave your data, please try again later.\n \(error.localizedDescription)"
             emptyLabel.isHidden = false
         }
     }
@@ -74,7 +72,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! SearchCollectionViewCell
         
-        cell.searchTitle.text = series[indexPath.row].title
+        cell.searchTitle.text = series[indexPath.row].name
         if series[indexPath.row].posterPath != nil {
             let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
             cell.searchThumbnail.kf.setImage(with: url)
@@ -89,13 +87,22 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         cell.buttonBinding = { sender in
             self.searchPresenter.changeListCheckMark(cell.searchCheckMark, indexPath: indexPath)
         }
-        cell.searchTitle.text = series[indexPath.row].title
+        cell.searchTitle.text = series[indexPath.row].name
        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToDetails", sender: self)
+        self.indexPath = indexPath
+        performSegue(withIdentifier: "goToDetailsFromSearch", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailsFromSearch",
+           let destination = segue.destination as? DetailsController {
+            destination.id = series[indexPath.row].id
+            destination.isSaved = series[indexPath.row].isSaved
+        }
     }
 }
 

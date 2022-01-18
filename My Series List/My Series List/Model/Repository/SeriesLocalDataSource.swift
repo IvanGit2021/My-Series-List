@@ -17,10 +17,9 @@ class SeriesLocalDataSource {
         let newSeries = Series(context: context)
         
         newSeries.id = series.id!
-        newSeries.title = series.title
+        newSeries.name = series.name
         newSeries.overView = series.overView
         newSeries.posterPath = series.posterPath
-        newSeries.voteAverage = series.voteAverage!
         newSeries.isSaved = series.isSaved 
         
         do {
@@ -36,6 +35,17 @@ class SeriesLocalDataSource {
         do {
             series = try context.fetch(request)
             completionHandler(.success(series))
+        } catch {
+            completionHandler(.failure(error))
+        }
+    }
+    
+    func getSeriesById(id: Int32, completionHandler: @escaping (Result<[Series], Error>) -> Void) {
+        let request: NSFetchRequest<Series> = Series.fetchRequest()
+        request.predicate = NSPredicate(format: "id == '\(id)'")
+        do {
+            let seriesById = try context.fetch(request)
+            completionHandler(.success(seriesById))
         } catch {
             completionHandler(.failure(error))
         }

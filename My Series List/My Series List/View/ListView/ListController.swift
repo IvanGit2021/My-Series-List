@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import Kingfisher
 
 class ListController: UIViewController {
@@ -16,6 +15,7 @@ class ListController: UIViewController {
     var listPresenter: ListPresenter?
     var series: [Series] = []
     let seriesLocalDataSource = SeriesLocalDataSource()
+    var indexPath = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let url = URL(string: "https://image.tmdb.org/t/p/w500" + series[indexPath.row].posterPath!)
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
-        cell.listTitle.text = series[indexPath.row].title
+        cell.listTitle.text = series[indexPath.row].name
         cell.listThumbnail.kf.setImage(with: url)
         cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
         cell.listCell = self
@@ -71,7 +71,16 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(series[indexPath.row])
+        self.indexPath = indexPath
+        performSegue(withIdentifier: "goToDetailsFromList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailsFromList",
+           let destination = segue.destination as? DetailsController {
+            destination.id = series[indexPath.row].id
+            destination.isSaved = series[indexPath.row].isSaved
+        }
     }
     
     func listButtonPressed(at indexPath: IndexPath) {

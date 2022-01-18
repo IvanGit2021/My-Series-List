@@ -18,8 +18,20 @@ class SeriesRepository {
         }
     }
     
+    func searchSeriesDetails(id: Int32, completionHandler: @escaping (Result<Api.Series, Error>) -> Void) {
+        seriesRemoteDataSource.getDetails(id: id) { results in
+            completionHandler(results)
+        }
+    }
+    
     func getSeries(completionHandler: @escaping (Result<[Series], Error>) -> Void){
         seriesLocalDataSource.getSeries { results in
+            completionHandler(results)
+        }
+    }
+    
+    func getSeriesById(id: Int32, completionHandler: @escaping (Result<[Series], Error>) -> Void){
+        seriesLocalDataSource.getSeriesById(id: id) { results in
             completionHandler(results)
         }
     }
