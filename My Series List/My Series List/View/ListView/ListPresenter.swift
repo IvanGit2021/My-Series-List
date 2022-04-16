@@ -13,6 +13,7 @@ protocol ListView: NSObjectProtocol {
     func listSeries(_ series: [Series])
     func listError(_ error: Error)
     func listEmpty()
+    func setEmptySeriesdList()
 }
 
 class ListPresenter: NSObject {
@@ -34,6 +35,7 @@ class ListPresenter: NSObject {
             case .success(let seriesCoreData):
                 self.series = seriesCoreData
                 if self.series.isEmpty {
+                    self.listView.setEmptySeriesdList()
                     self.listView.listEmpty()
                 } else {
                     self.listView.listSeries(self.series)

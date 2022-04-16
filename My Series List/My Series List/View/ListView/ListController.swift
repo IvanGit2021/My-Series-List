@@ -31,6 +31,10 @@ class ListController: UIViewController {
 
 extension ListController: ListView {
     
+    func setEmptySeriesdList() {
+        series.removeAll()
+    }
+    
     func listSeries(_ series: [Series]) {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -84,7 +88,7 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func listButtonPressed(at indexPath: IndexPath) {
-        listPresenter!.deleteSeries(series: series[indexPath.row])
+        listPresenter?.deleteSeries(series: series[indexPath.row])
         series.remove(at: indexPath.row)
         if series.count == 0 {
             listEmpty()

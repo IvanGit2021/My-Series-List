@@ -36,9 +36,9 @@ class SeriesRepository {
         }
     }
     
-    func deleteSeries(series: Series, completionHandler: ((Result<String, Error>) -> Void)? = nil) {
+    func deleteSeries(series: Series, completionHandler: @escaping (Result<String, Error>) -> Void) {
         seriesLocalDataSource.deleteSeries(series: series) { results in
-            completionHandler!(results)
+            completionHandler(results)
         }
     }
     
