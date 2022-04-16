@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YrI-Of-ZtO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fDD-YZ-iQH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Series List-->
+        <!--Favourites-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ListController" customModule="My_Series_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,20 +91,7 @@
                             <constraint firstAttribute="bottom" secondItem="Sve-Fb-eJo" secondAttribute="bottom" id="aV8-IQ-LtH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Series List" id="cme-m0-rZF" colorLabel="IBBuiltInLabel-Gray">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="7Ox-2a-u53">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="H1A-oy-rtk">
-                                <rect key="frame" x="288" y="0.0" width="106" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
-                                <connections>
-                                    <segue destination="Rep-2m-BzR" kind="show" id="z57-49-ONf"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Favourites" largeTitleDisplayMode="always" id="cme-m0-rZF" colorLabel="IBBuiltInLabel-Gray"/>
                     <connections>
                         <outlet property="collectionView" destination="Sve-Fb-eJo" id="vpq-AZ-zIH"/>
                         <outlet property="emptyLabel" destination="A3B-eo-N3L" id="CU8-ML-Ttg"/>
@@ -113,9 +100,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286.9565217391305" y="84.375"/>
+            <point key="canvasLocation" x="2275" y="94"/>
         </scene>
-        <!--Search Controller-->
+        <!--Top Listed-->
         <scene sceneID="Cao-CQ-WtW">
             <objects>
                 <viewController id="Rep-2m-BzR" customClass="SearchController" customModule="My_Series_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,7 +144,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXe-j8-kN6">
-                                                    <rect key="frame" x="159" y="20" width="48" height="31"/>
+                                                    <rect key="frame" x="157" y="20" width="50" height="31"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
@@ -197,7 +184,13 @@
                             <constraint firstItem="TTA-j2-bEO" firstAttribute="top" secondItem="qup-bW-kjo" secondAttribute="top" id="mzO-Qw-jYu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="JhY-0b-UOG"/>
+                    <navigationItem key="navigationItem" title="Top Listed" largeTitleDisplayMode="always" id="JhY-0b-UOG">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star.fill" catalog="system" id="kiD-je-UIh">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="xDy-OV-Yoh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="TTA-j2-bEO" id="5cI-XR-z1T"/>
                         <outlet property="emptyLabel" destination="DTr-9Z-zrw" id="3bz-qX-eAN"/>
@@ -206,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfW-Lh-uVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166.666666666667" y="83.705357142857139"/>
+            <point key="canvasLocation" x="1548" y="84"/>
         </scene>
         <!--Details Controller-->
         <scene sceneID="ufq-Hg-3A9">
@@ -400,42 +393,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DW-Rr-KqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763.7681159420292" y="996.42857142857133"/>
+            <point key="canvasLocation" x="1883" y="996"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="8GP-ar-vVx">
+        <scene sceneID="GN6-V3-YBc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YrI-Of-ZtO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fDD-YZ-iQH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kai-5m-Npa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7P-R0-XGQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="textShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WQw-jH-zId"/>
+                        <segue destination="Rep-2m-BzR" kind="relationship" relationship="rootViewController" id="5IV-wb-cjF"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DwZ-LH-OXB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgv-IG-If7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.81159420289856" y="84.375"/>
+            <point key="canvasLocation" x="828" y="94"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e7M-gJ-aN8"/>
+        <segue reference="g0Y-M8-vmz"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
         <image name="checkmark.rectangle.fill" catalog="system" width="128" height="93"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
