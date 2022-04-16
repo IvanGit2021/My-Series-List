@@ -11,7 +11,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var searchThumbnail: UIImageView!
     @IBOutlet weak var searchTitle: UILabel!
-    @IBOutlet weak var searchCheckMark: UIButton!
     let searchPresenter = SearchPresenter()
     var buttonBinding : ((Any) -> Void)?
     

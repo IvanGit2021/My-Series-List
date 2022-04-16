@@ -79,14 +79,7 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
         } else {
             cell.searchThumbnail.image = UIImage(named: "noImage")
         }
-        if series[indexPath.row].isSaved == true {
-            cell.searchCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-        } else {
-            cell.searchCheckMark.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
-        }
-        cell.buttonBinding = { sender in
-            self.searchPresenter.changeListCheckMark(cell.searchCheckMark, indexPath: indexPath)
-        }
+
         cell.searchTitle.text = series[indexPath.row].name
        
         return cell
