@@ -22,7 +22,7 @@ class DetailsController: UIViewController {
     @IBOutlet weak var detailsWebSite: UIButton!
     @IBOutlet weak var emptyDetails: UILabel!
     @IBOutlet weak var detailsSaveDelete: UIButton!
-    @IBOutlet weak var detailsFavourites: UIImageView!
+    @IBOutlet weak var detailsFavourites: UILabel!
     
     let detailsPresenter = DetailsPresenter()
     var id: Int32?

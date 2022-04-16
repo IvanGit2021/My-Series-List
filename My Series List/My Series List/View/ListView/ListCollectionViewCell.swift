@@ -7,19 +7,9 @@
 
 import UIKit
 
-protocol ListCell {
-    func listButtonPressed(at indexPath: IndexPath)
-}
-
 class ListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var listThumbnail: UIImageView!
     @IBOutlet weak var listTitle: UILabel!
-    @IBOutlet weak var listCheckMark: UIButton!
-    var listCell: ListCell?
     var indexPath: IndexPath!
-
-    @IBAction func listCheckMarkPressed(_ sender: UIButton) {
-        self.listCell?.listButtonPressed(at: indexPath)
-    }
 }
