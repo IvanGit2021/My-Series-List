@@ -22,7 +22,7 @@ class DetailsController: UIViewController {
     @IBOutlet weak var detailsWebSite: UIButton!
     @IBOutlet weak var emptyDetails: UILabel!
     @IBOutlet weak var detailsSaveDelete: UIButton!
-    @IBOutlet weak var detailsFavourites: UIImageView!
+    @IBOutlet weak var detailsFavourites: UILabel!
     
     let detailsPresenter = DetailsPresenter()
     var id: Int32?
@@ -109,10 +109,17 @@ extension DetailsController: DetailsView {
 
     func updateFavourites() {
         if isSaved! {
-            detailsFavourites.isHidden = true
+            detailsFavourites.alpha = 1
+            UIView.animate(withDuration: 0.5) { [self] in
+                detailsFavourites.alpha = 0
+            }
             detailsSaveDelete.setTitle("Save", for: .normal)
             isSaved = false
         } else {
+            detailsFavourites.alpha = 0
+            UIView.animate(withDuration: 0.5) { [self] in
+                detailsFavourites.alpha = 1
+            }
             detailsFavourites.isHidden = false
             detailsSaveDelete.setTitle("Delete", for: .normal)
             isSaved = true

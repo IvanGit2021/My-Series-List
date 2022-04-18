@@ -27,6 +27,7 @@
 		9CD229542747CC9900BD5735 /* SeriesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229532747CC9900BD5735 /* SeriesLocalDataSource.swift */; };
 		9CD229592748269800BD5735 /* SeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD229582748269800BD5735 /* SeriesRepository.swift */; };
 		9CFF4F71274E8CCA00279BF8 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF4F70274E8CCA00279BF8 /* ListPresenter.swift */; };
+		FA7666A8280B3C8600D184CA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7666A7280B3C8600D184CA /* InitialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		9CD229532747CC9900BD5735 /* SeriesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesLocalDataSource.swift; sourceTree = "<group>"; };
 		9CD229582748269800BD5735 /* SeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepository.swift; sourceTree = "<group>"; };
 		9CFF4F70274E8CCA00279BF8 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		FA7666A7280B3C8600D184CA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				9C61AC852746686900AAB574 /* AppDelegate.swift */,
 				9C61AC872746686900AAB574 /* SceneDelegate.swift */,
 				9C61AC8B2746686900AAB574 /* Main.storyboard */,
+				FA7666A7280B3C8600D184CA /* InitialViewController.swift */,
 				9C61AC912746686A00AAB574 /* Assets.xcassets */,
 				9C61AC932746686A00AAB574 /* LaunchScreen.storyboard */,
 				9C61AC962746686A00AAB574 /* Info.plist */,
@@ -240,6 +243,7 @@
 				9C61AC8A2746686900AAB574 /* ViewController.swift in Sources */,
 				9C61AC862746686900AAB574 /* AppDelegate.swift in Sources */,
 				9C6C1EF6276A0DEB00D03154 /* SearchCollectionViewCell.swift in Sources */,
+				FA7666A8280B3C8600D184CA /* InitialViewController.swift in Sources */,
 				9C7779A7276378B2002A4371 /* ListCollectionViewCell.swift in Sources */,
 				9CD229542747CC9900BD5735 /* SeriesLocalDataSource.swift in Sources */,
 				9C61AC902746686900AAB574 /* My_Series_List.xcdatamodeld in Sources */,
@@ -397,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52ZUF84969;
+				DEVELOPMENT_TEAM = 4KX9UZ7MLZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "My Series List/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -425,7 +429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52ZUF84969;
+				DEVELOPMENT_TEAM = 4KX9UZ7MLZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "My Series List/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

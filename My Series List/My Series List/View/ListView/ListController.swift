@@ -20,6 +20,7 @@ class ListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listPresenter = ListPresenter(listView: self)
+        navigationItem.setHidesBackButton(false, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +56,8 @@ extension ListController: ListView {
     }
 }
 
-extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, ListCell {
+extension ListController: UICollectionViewDataSource, UICollectionViewDelegate {
+
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return series.count
@@ -67,8 +69,6 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
         cell.listTitle.text = series[indexPath.row].name
         cell.listThumbnail.kf.setImage(with: url)
-        cell.listCheckMark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .normal)
-        cell.listCell = self
         cell.indexPath = indexPath
        
         return cell
@@ -85,14 +85,5 @@ extension ListController: UICollectionViewDataSource, UICollectionViewDelegate, 
             destination.id = series[indexPath.row].id
             destination.isSaved = series[indexPath.row].isSaved
         }
-    }
-    
-    func listButtonPressed(at indexPath: IndexPath) {
-        listPresenter?.deleteSeries(series: series[indexPath.row])
-        series.remove(at: indexPath.row)
-        if series.count == 0 {
-            listEmpty()
-        }
-        listPresenter!.reloadCollectionView(series: series, collectionView: collectionView)
     }
 }
