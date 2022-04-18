@@ -24,6 +24,7 @@ class SearchController: UIViewController {
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         emptyLabel.isHidden = true
+        navigationItem.setHidesBackButton(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -20,6 +20,7 @@ class ListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listPresenter = ListPresenter(listView: self)
+        navigationItem.setHidesBackButton(false, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
